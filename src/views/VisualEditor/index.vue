@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-header height="80px" class="flex items-center shadow-md">
-            <Header />
+            <!-- <Header /> -->
         </el-header>
         <el-container class="layout-container">
             <el-aside class="shadow-sm" width="380px">
