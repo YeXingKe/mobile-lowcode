@@ -5,9 +5,13 @@
 </template>
 
 <script lang="ts" setup>
+import LeftComponents from '@/components/leftComponent'
+
 defineOptions({
   name: 'LeftAside' // Vue 3.3+ 支持
 })
+const tabs = Object.entries(LeftComponents)
+console.log(tabs,'--------tabs')
 </script>
 
 <style lang="scss" scoped>

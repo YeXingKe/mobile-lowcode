@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { reactive } from 'vue';
-import PageIndex from '@/views/PageIndex/index.vue'
+import VisualEditor from '@/views/VisualEditor/index.vue'
 
 // const appData = reactive({
 //   zIndex: 3000,
@@ -10,7 +10,7 @@ import PageIndex from '@/views/PageIndex/index.vue'
 
 <template>
   <el-config-provider :size="'small'" :z-index="3000">
-    <PageIndex />
+    <VisualEditor />
   </el-config-provider>
 </template>
 

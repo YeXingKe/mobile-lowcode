@@ -5,7 +5,7 @@
         </el-header>
         <el-container class="layout-container">
             <el-aside class="shadow-sm" width="380px">
-
+               <LeftAside />
             </el-aside>
             <el-main>
 
@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import LeftAside from '@/views/container/LeftAside/index.vue'
 defineOptions({
   name: 'VisualEditor' // Vue 3.3+ 支持
 })
