@@ -7,9 +7,7 @@ export default defineComponent({
   icon: Edit,
   setup(){
     return ()=>(
-      <>
-      
-      </>
+     <div></div>
     )
   }
 })

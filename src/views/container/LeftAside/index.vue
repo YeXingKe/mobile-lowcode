@@ -1,17 +1,33 @@
 <template>
-    <el-tabs tab-position="left" class="left-aside">
-      <template></template>
+    <el-tabs v-model="activeName" tab-position="left" class="left-aside">
+      <template v-for="tab in tabs" :key="tab.name">
+      <el-tab-pane :name="tab.name" lazy>
+        <template #label>
+          <div class="tab-item">
+            <el-icon :size="26"><component :is="tab.icon" /></el-icon>
+            {{ tab.label }}
+          </div>
+        </template>
+        <component :is="tab.comp" v-bind="$attrs" />
+      </el-tab-pane>
+    </template>
     </el-tabs>
 </template>
 
 <script lang="ts" setup>
 import LeftComponents from '@/components/leftComponent'
+import { ref } from 'vue';
 
 defineOptions({
   name: 'LeftAside' // Vue 3.3+ 支持
 })
-const tabs = Object.entries(LeftComponents)
-console.log(tabs,'--------tabs')
+const tabs = Object.entries(LeftComponents)    .map(([name, component]) => {
+      const { label, icon, order } = component;
+      return { label, icon, name, order, comp: component };
+    })
+    .sort((a, b) => a.order - b.order);
+
+const activeName = ref(tabs[0].name);
 </script>
 
 <style lang="scss" scoped>
