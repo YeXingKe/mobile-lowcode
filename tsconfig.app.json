@@ -23,7 +23,6 @@
     "noImplicitThis": true,
     "removeComments": false,
     "strictFunctionTypes": false,
-    "baseUrl": ".",
     // "jsxFactory": "h",
     // "jsxFragmentFactory": "Fragment",
     "types": ["element-plus/global"],
