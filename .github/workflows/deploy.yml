@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]          # 监听哪条分支就写哪条
+    branches: [main]
 
 permissions:
   contents: read
@@ -19,20 +19,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 1. 安装 Node & 依赖
+      # 1. 安装 pnpm
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest         # 或指定 9 / latest
+
+      # 2. 安装 Node（pnpm 缓存自动生效）
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-      - run: npm ci            # 或 yarn install
+          cache: 'pnpm'
 
-      # 2. 构建产物（按你项目实际脚本改）
-      - run: npm run build     # 默认输出到 dist
+      # 3. 安装依赖 & 构建
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
 
-      # 3. 上传产物为 GitHub Pages 工件
+      # 4. 上传产物
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist         # 产物目录，Vite 默认是 dist；VueCLI 是 build
+          path: ./dist        # 按实际产物目录改
 
   deploy:
     environment:
