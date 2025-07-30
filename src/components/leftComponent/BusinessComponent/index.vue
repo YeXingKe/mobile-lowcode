@@ -1,22 +1,17 @@
 <template>
-    <div>
-        
-    </div>
+  <div></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { Memo } from '@element-plus/icons-vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'BusinessComponent',
   label: '业务组件',
-  setup(){
-    
-  }
+  icon: Memo,
+  setup() {},
 })
 </script>
 
-<style lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>

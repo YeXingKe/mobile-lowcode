@@ -1,6 +1,9 @@
 // import './assets/main.css'
 import 'element-plus/theme-chalk/index.css'
-import 'vant/lib/index.css';
+import 'vant/lib/index.css'
+import '@/styles/index.scss'
+import 'normalize.css'
+import 'virtual:windi.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
