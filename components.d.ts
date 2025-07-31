@@ -8,8 +8,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AttrEditor: typeof import('./src/components/rightComponent/AttrEditor.vue')['default']
-    BusinessComponent: typeof import('./src/components/leftComponent/BusinessComponent/index.vue')['default']
+    AttrEditor: typeof import('./src/components/right-component/AttrEditor.vue')['default']
+    BusinessComponent: typeof import('./src/components/left-component/BusinessComponent/index.vue')['default']
+    DraggableTransition: typeof import('./src/components/common/DraggableTransition/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']

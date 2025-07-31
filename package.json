@@ -30,15 +30,18 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
+    "@vueuse/core": "^13.6.0",
     "clsx": "^2.1.1",
     "element-plus": "^2.10.4",
+    "lodash-es": "^4.17.21",
+    "nanoid": "^5.1.5",
     "normalize.css": "^8.0.1",
     "pinia": "^3.0.3",
     "sass": "^1.89.2",
     "vant": "^4.9.21",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",

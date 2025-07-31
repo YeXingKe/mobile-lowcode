@@ -11,8 +11,8 @@
 }
 
 /**
-  * 显示组件边界
-  */
+      * 显示组件边界
+      */
 @mixin showComponentBorder {
   @include showSoliOutline;
 
@@ -22,8 +22,8 @@
 }
 
 /**
-  * 显示组件标签名称
-  */
+      * 显示组件标签名称
+      */
 @mixin showCompLabel($direction: left) {
   @if ($direction == 'left') {
     top: 0;
@@ -54,8 +54,8 @@
 }
 
 /**
-  * 显示实心外边框线
-  */
+      * 显示实心外边框线
+      */
 
 @mixin showSoliOutline($width: 2px) {
   outline: $width solid #006eff;
@@ -63,8 +63,8 @@
 }
 
 /**
-  * 显示虚线外边框线
-  */
+      * 显示虚线外边框线
+      */
 
 @mixin showDashedOutline($width: 2px) {
   outline: $width dashed #b0c1d7;

@@ -13,8 +13,6 @@ defineOptions({
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/simulator-editor.scss';
-
 .simulator-container {
   display: flex;
   width: 100%;

@@ -14,22 +14,23 @@ export default defineConfigWithVueTs(
     files: ['**/*.{ts,mts,tsx,vue}'],
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  globalIgnores(['**/dist/**']),
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
   {
     ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
+    files: ['src/**/__tests__/*', '**/*.{ts,mts,tsx,vue}'],
     rules: {
       'vue/multi-word-component-names': 'off',
-      '@typescript-eslint/no-empty-object-type':'off',
-      '@typescript-eslint/no-explicit-any':'off'
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   {
     rules: {
-      'vue/multi-word-component-names': 'off' // 关闭规则 Vue 组件名必须是多个单词的组合
-    }
-  }
+      'vue/multi-word-component-names': 'off', // 关闭规则 Vue 组件名必须是多个单词的组合
+    },
+  },
 )
