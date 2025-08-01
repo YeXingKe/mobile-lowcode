@@ -12,7 +12,6 @@ export default defineComponent({
   icon: Edit,
   setup() {
     const baseWidgets = ref(visualConfig.componentModules.baseWidgets)
-    console.log('12831----', baseWidgets)
     const cloneDog = (comp) => {
       console.log('当前拖拽的组件：', comp)
       const newComp = cloneDeep(comp)
@@ -29,8 +28,8 @@ export default defineComponent({
           class={styles.listGroup}
           v-model={baseWidgets.value}
           group={{ name: 'components', pull: 'clone', put: false }}
-          clone={cloneDog}
-          onChange={log}
+          // clone={cloneDog}
+          // onChange={log}
           itemKey={'key'}
         >
           {{

@@ -3,6 +3,7 @@ import type { JSX } from 'vue/jsx-runtime'
 import type { VisualEditorProps } from './visual-editor-props'
 import { useDotProp } from '@/hooks/useDotProp'
 import { generateNanoid } from '.'
+import type { ContentTypeEnum, RequestEnum } from '@/enums/httpEnum'
 
 /**
  * @description 组件动作事件处理
@@ -16,7 +17,109 @@ export type ActionHandle = {
     recv?: string
   }
 }
-
+/**
+ * @description 实体类型
+ */
+export type EntityType = {
+  /** 绑定的字段 输入 */
+  key: string
+  /** 实体名称 输入 */
+  name: string
+  /** 数据类型 选择 */
+  type: string
+  /** 默认值 输入 */
+  value: string
+}
+/**
+ * @description 数据模型
+ */
+export type VisualEditorModel = {
+  /** 数据源名称 */
+  name: string
+  /** 绑定的字段 该字段创建的时候生成 */
+  key: string
+  /** 实体集合 */
+  entitys: EntityType[]
+}
+/**
+ * @description 页面配置
+ */
+export type PageConfig = {
+  /** 背景图片 */
+  bgImage: string
+  /** 背景颜色 */
+  bgColor: string
+  /** 是否缓存当前页面 */
+  keepAlive: boolean
+}
+/**
+ * @description 页面对象
+ */
+export type VisualEditorPage = {
+  /** 页面标题 */
+  title: string
+  /** 页面路径 */
+  path: string
+  /** 404是重定向到默认页面 */
+  isDefault?: boolean
+  /** 页面配置 */
+  config: PageConfig
+  /** 当前页面的所有组件 */
+  blocks: VisualEditorBlockData[]
+}
+/**
+ * @description 可以认为是 路由=>页面
+ */
+export type VisualEditorPages = {
+  [path: string]: VisualEditorPage
+}
+/**
+ * @description 接口请求对象
+ */
+export type FetchApiItem = {
+  /**  随机生成的key */
+  key: string
+  /** 随机生成的key */
+  name: string
+  options: {
+    /** 请求的url */
+    url: string
+    /** 请求的方法 */
+    method: keyof typeof RequestEnum
+    /** 请求的内容类型 */
+    contentType: keyof typeof ContentTypeEnum
+  }
+  data: {
+    /** 请求绑定对应的某个实体 */
+    bind: string
+    /** 响应的结果绑定到某个实体上 */
+    recv: string
+  }
+}
+/**
+ * @description 动作集合
+ */
+export type VisualEditorActions = {
+  fetch: {
+    name: '接口请求'
+    apis: FetchApiItem[]
+  }
+  dialog: {
+    name: '对话框'
+    handlers: []
+  }
+}
+/**
+ * @description 总的数据集
+ */
+export type VisualEditorModelValue = {
+  /** 页面 */
+  pages: VisualEditorPages
+  /** 实体 */
+  models: VisualEditorModel[]
+  /** 动作 */
+  actions: VisualEditorActions
+}
 /**
  * @description 组件动作
  */

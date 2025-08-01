@@ -16,10 +16,10 @@
 </template>
 
 <script lang="ts" setup>
-import LeftAside from '@/views/container/LeftAside/index.vue'
-import PageHeader from '@/views/container/PageHeader/index.vue'
-import SimulatorEditor from '@/views/container/SimulatorEditor/index.vue'
-import RightAside from '@/views/container/RightAside'
+import LeftAside from '@/views/container/left-aside/index.vue'
+import PageHeader from '@/views/container/page-header/index.vue'
+import SimulatorEditor from '@/views/container/simulator-editor/index.vue'
+import RightAside from '@/views/container/right-aside'
 defineOptions({
   name: 'VisualEditor', // Vue 3.3+ 支持
 })

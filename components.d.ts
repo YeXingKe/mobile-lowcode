@@ -8,11 +8,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AttrEditor: typeof import('./src/components/right-component/AttrEditor.vue')['default']
-    BusinessComponent: typeof import('./src/components/left-component/BusinessComponent/index.vue')['default']
+    AttrEditor: typeof import('./src/components/right-comp/attr-editor/index.vue')['default']
+    BusinessContainer: typeof import('./src/components/left-comp/business-container/index.vue')['default']
     DraggableTransition: typeof import('./src/components/common/DraggableTransition/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
@@ -22,14 +21,8 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
-    IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
-    IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconGithub: typeof import('./src/components/icons/IconGithub.vue')['default']
-    IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
-    IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VanButton: typeof import('vant/es')['Button']
   }
 }

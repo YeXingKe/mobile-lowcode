@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import LeftComponents from '@/components/left-component'
+import LeftComponents from '@/components/left-comp'
 import { ref } from 'vue'
 
 defineOptions({
