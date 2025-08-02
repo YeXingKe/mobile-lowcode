@@ -12,7 +12,8 @@ export const useGlobalProperties = () => {
   const globalProperties = getCurrentInstance()!.appContext.config
     .globalProperties as unknown as GlobalProperties
 
-  const registerRef = (el, _vid: string) => el && (globalProperties.$$refs[_vid] = el)
+  const registerRef = (el, _vid: string) =>
+    el && globalProperties.$$refs && (globalProperties.$$refs[_vid] = el)
 
   return {
     globalProperties,

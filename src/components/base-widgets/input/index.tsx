@@ -12,7 +12,6 @@ export default {
   ),
   render: ({ styles, block, props }) => {
     const { registerRef } = useGlobalProperties()
-    console.log('skjhdh---', styles)
     let rules = []
     try {
       rules = JSON.parse(props.rules)

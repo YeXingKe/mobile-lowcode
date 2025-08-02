@@ -2,8 +2,61 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElButton: typeof import('element-plus')['ElButton'] & {
+    ElButton: (typeof import('element-plus'))['ElButton'] & {
       size?: 'small' | 'default' | 'large' | 'custom-size' // 添加你的自定义类型
+    }
+    ElIcon: (typeof import('element-plus'))['ElIcon'] & {
+      onClick?: (e: MouseEvent) => void // 添加你的自定义类型
     }
   }
 }
+import { ElIcon } from 'element-plus'
+
+declare module 'element-plus' {
+  export interface ElIcon {
+    onClick?: (e: MouseEvent) => void
+  }
+}
+declare global {
+  /** label-value一般用做选项 */
+  type LabelValue = {
+    label: string
+    value: any
+  }
+  /** label-value 数组 一般用做选项 */
+  type LabelValueOptions = OptionItem[]
+
+  type RequestIdleCallbackHandle = any
+
+  type RequestIdleCallbackDeadline = {
+    readonly didTimeout: boolean
+    timeRemaining: () => number
+  }
+
+  type RequestIdleCallbackOptions = {
+    timeout: number
+  }
+  interface Window {
+    $$refs: any
+    requestIdleCallback: (
+      callback: (deadline: RequestIdleCallbackDeadline) => void,
+      opts?: RequestIdleCallbackOptions,
+    ) => RequestIdleCallbackHandle
+    cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void
+  }
+}
+
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    $$refs: any
+  }
+}
+
+declare module '@vue/runtime-dom' {
+  export interface CSSProperties {
+    /** 临时padding变量. */
+    tempPadding?: string
+  }
+}
+
+export {}

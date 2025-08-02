@@ -9,7 +9,7 @@
       name: !isDrag ? 'flip-list' : null,
     }"
     :group="group"
-    v-bind="{ ...dragOptions, ...$attrs }"
+    v-bind="{ ...dragOptions, ...attrs }"
     :item-key="itemKey"
     @start="isDrag = true"
     @end="isDrag = false"
@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 import draggable from 'vuedraggable'
 import { useVModel } from '@vueuse/core' // 自定义 “双向绑定” hook
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 defineOptions({
   name: 'DraggableTransition',
@@ -35,15 +35,16 @@ const props = withDefaults(
   defineProps<{
     drag?: boolean
     itemKey?: string
-    modelValue?: Array<[]>
+    modelValue?: Array<any>
     group?: object
     fallbackClass?: string
   }>(),
-  { modelValue: () => [] },
+  { modelValue: () => [], itemKey: '_vid', group: () => ({ name: 'components' }) },
 )
 const emit = defineEmits(['update:modelValue', 'update:drag'])
 const list = useVModel(props, 'modelValue', emit)
 const isDrag = useVModel(props, 'drag', emit)
+const attrs = useAttrs() // 等同于$attr
 
 const dragOptions = computed(() => ({
   animation: 200,

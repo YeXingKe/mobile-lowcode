@@ -21,7 +21,7 @@
               @contextmenu.stop.prevent="onContextmenuBlock($event, outElement)"
               @mousedown="selectComp(outElement)"
             >
-              <comp-render
+              <CompRender
                 :key="outElement._vid"
                 :element="outElement"
                 :style="{
@@ -44,7 +44,7 @@
                     :delete-comp="deleteComp"
                   />
                 </template>
-              </comp-render>
+              </CompRender>
             </div>
           </template>
         </DraggableTransition>
@@ -63,12 +63,14 @@ import type { VisualEditorBlockData } from '@/utils/visual-editor'
 import { ref, watchEffect } from 'vue'
 import { useModal } from '@/hooks/useModal'
 import MonacoEditor from '@/components/monaco-editor'
-import compRender from '@/views/comp-render'
+import CompRender from '@/views/comp-render'
+import SlotItem from './slot-item.vue'
+import DraggableTransition from '@/components/common/draggable-transition/index.vue'
 
 defineOptions({
   name: 'SimulatorEditor',
 })
-console.log('错在哪？？', useVisualData())
+
 const { currentPage, setCurrentBlock } = useVisualData()
 const { globalProperties } = useGlobalProperties()
 const drag = ref(false)
@@ -273,7 +275,7 @@ const onContextmenuBlock = (
   }
 }
 
-.listGroupItem {
+.list-group-item {
   position: relative;
   padding: 3px;
   cursor: move;

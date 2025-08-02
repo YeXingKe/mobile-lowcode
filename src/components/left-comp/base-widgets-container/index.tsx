@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue'
 import { Edit } from '@element-plus/icons-vue'
 import { cloneDeep } from 'lodash-es'
-import DraggableTransition from '@/components/common/DraggableTransition/index.vue'
+import DraggableTransition from '@/components/common/draggable-transition/index.vue'
 import styles from './index.module.scss'
 import { createNewBlock } from '@/utils/visual-editor'
 import { visualConfig } from '@/utils/visual.config'
@@ -28,8 +28,8 @@ export default defineComponent({
           class={styles.listGroup}
           v-model={baseWidgets.value}
           group={{ name: 'components', pull: 'clone', put: false }}
-          // clone={cloneDog}
-          // onChange={log}
+          clone={cloneDog}
+          onChange={log}
           itemKey={'key'}
         >
           {{

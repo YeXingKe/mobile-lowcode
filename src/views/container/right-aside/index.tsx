@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import clsx from 'clsx'
 import { ElTabPane, ElTabs } from 'element-plus'
 import { ArrowRightBold, ArrowLeftBold } from '@element-plus/icons-vue'
+import { AttrEditor } from '@/components/right-comp/attr-editor'
 
 export default defineComponent({
   name: 'RightAside',
@@ -25,7 +26,9 @@ export default defineComponent({
               stretch={true}
               class={styles.tabs}
             >
-              <ElTabPane label="属性" name="attr"></ElTabPane>
+              <ElTabPane label="属性" name="attr">
+                <AttrEditor />
+              </ElTabPane>
               <ElTabPane label="动画" name="animate"></ElTabPane>
               <ElTabPane label="事件" name="events"></ElTabPane>
               <ElTabPane label="页面设置" name="page-setting"></ElTabPane>
