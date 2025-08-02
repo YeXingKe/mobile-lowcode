@@ -75,7 +75,7 @@ export const initVisualData = () => {
   const state: IState = reactive({
     jsonData,
     currentPage,
-    currentBlock: currentPage?.blocks?.find((item) => item.focus) ?? ({} as VisualEditorBlockData),
+    currentBlock: currentPage?.blocks?.find((item) => item?.focus) ?? ({} as VisualEditorBlockData),
   })
   const paths = Object.keys(jsonData.pages)
 
@@ -122,7 +122,7 @@ export const initVisualData = () => {
       state.currentPage = jsonData.pages['/']
       router.replace('/')
     }
-    const currentFocusBlock = state.currentPage.blocks.find((item) => item.focus)
+    const currentFocusBlock = state.currentPage.blocks.find((item) => item?.focus)
     setCurrentBlock(currentFocusBlock ?? ({} as VisualEditorBlockData))
   }
 

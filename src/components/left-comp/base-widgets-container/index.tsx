@@ -28,8 +28,12 @@ export default defineComponent({
           class={styles.listGroup}
           v-model={baseWidgets.value}
           group={{ name: 'components', pull: 'clone', put: false }}
-          clone={cloneDog}
-          onChange={log}
+          // clone={cloneDog as any}
+          // onChange={log as any}
+          {...{
+            clone: cloneDog,
+            onChange:log
+          } as Partial<{ clone: Function,onChange: Function }>}
           itemKey={'key'}
         >
           {{

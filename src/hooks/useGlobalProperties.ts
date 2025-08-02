@@ -9,6 +9,7 @@ interface GlobalProperties {
 }
 
 export const useGlobalProperties = () => {
+  // 只包含 应用级注入的全局属性，可自定义
   const globalProperties = getCurrentInstance()!.appContext.config
     .globalProperties as unknown as GlobalProperties
 

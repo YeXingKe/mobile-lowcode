@@ -141,18 +141,16 @@ export const CrossSortableOptionsEditor = defineComponent({
                     ></ElInput>
                   )}
                   <div class={'flex flex-col'}>
-                    <ElIcon
-                      class="hover:text-blue-400 cursor-pointer"
-                      // onClick={() => incrementOption(index)}
-                    >
-                      <CirclePlus></CirclePlus>
-                    </ElIcon>
-                    <ElIcon
-                      class="hover:text-red-500 cursor-pointer"
-                      // onClick={() => state.list.splice(index, 1)}
-                    >
-                      <Remove></Remove>
-                    </ElIcon>
+                    <div onClick={() => incrementOption(index)}>
+                      <ElIcon class="hover:text-blue-400 cursor-pointer">
+                        <CirclePlus></CirclePlus>
+                      </ElIcon>
+                    </div>
+                    <div onClick={() => state.list.splice(index, 1)}>
+                      <ElIcon class="hover:text-red-500 cursor-pointer">
+                        <Remove></Remove>
+                      </ElIcon>
+                    </div>
                   </div>
                 </div>
               ),

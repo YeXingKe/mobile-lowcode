@@ -80,7 +80,7 @@ const isDrag = useVModel(props, 'drag', emit)
 const slotChildren = useVModel(props, 'children', emit)
 
 // 初始化时设置上次选中的组件
-props.children.some((item) => item.focus && props.selectComp(item))
+props.children.some((item) => item?.focus && props.selectComp(item))
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.tsx", "types"],
   "exclude": ["src/**/__tests__/*", "node_modules", "dist"],
   "compilerOptions": {
     "module": "esnext",
@@ -25,7 +25,7 @@
     "strictFunctionTypes": false,
     // "jsxFactory": "h",
     // "jsxFragmentFactory": "Fragment",
-    "types": ["element-plus/global"],
+    "types": ["element-plus/global", "vite/client", "./src/global.d.ts"],
     "paths": {
       "@/*": ["./src/*"]
     }

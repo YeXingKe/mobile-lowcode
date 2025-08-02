@@ -156,7 +156,6 @@ const selectComp = (element: VisualEditorBlockData) => {
  * 删除组件
  */
 const deleteComp = (block: VisualEditorBlockData, parentBlocks = currentPage.value.blocks) => {
-  console.log(block, 'block')
   const index = parentBlocks.findIndex((item) => item._vid == block._vid)
   if (index != -1) {
     delete globalProperties.$$refs[parentBlocks[index]._vid]

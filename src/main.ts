@@ -16,4 +16,9 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
+app.config.globalProperties.$$refs = {}
+
+// if (import.meta.env.DEV) {
+window.$$refs = app.config.globalProperties.$$refs
+
 app.mount('#app')

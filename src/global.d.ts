@@ -10,13 +10,6 @@ declare module '@vue/runtime-core' {
     }
   }
 }
-import { ElIcon } from 'element-plus'
-
-declare module 'element-plus' {
-  export interface ElIcon {
-    onClick?: (e: MouseEvent) => void
-  }
-}
 declare global {
   /** label-value一般用做选项 */
   type LabelValue = {
