@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
-import 'nprogress/css/nprogress.css'; // 进度条样式
+import 'nprogress/nprogress.css'; // 进度条样式
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
