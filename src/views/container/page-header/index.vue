@@ -41,7 +41,7 @@ defineOptions({
 
 const themeList = reactive([
   { className: 'default', label: '默认', color: '#228be6' },
-  { className: 'dark', label: '暗黑', color: '#212529' },
+  // { className: 'dark', label: '暗黑', color: '#212529' },
   // { className: 'light', label: '明亮', color: '#228be6' },
   { className: 'orange', label: '橙意', color: '#ff922b' },
   { className: 'green', label: '清新', color: '#2b8a3e' },
@@ -58,7 +58,7 @@ const changeTheme = (theme) => {
   currentTheme.value = theme;
 };
 
-changeTheme(localStorage.getItem('theme') || 'default');
+// changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
 

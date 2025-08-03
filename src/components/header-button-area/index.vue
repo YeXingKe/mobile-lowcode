@@ -6,27 +6,27 @@
             <el-radio-button label="pc">pc</el-radio-button>
         </el-radio-group>
         <span class="w-1"></span>
-        <el-button :color="primaryColor">
+        <el-button :color="primaryColor" title="撤销">
             <template #icon>
                 <IconReturn class="cursor-pointer" />
             </template>
         </el-button>
         <span class="w-1"></span>
-        <el-button :color="primaryColor">
+        <el-button :color="primaryColor" title="恢复">
             <template #icon>
                 <IconNext class="cursor-pointer" />
             </template>
         </el-button>
         <span class="w-1"></span>
-        <el-button :color="primaryColor">
+        <el-button :color="primaryColor" title="导出">
             <template #icon>
                 <IconExport class="cursor-pointer" />
             </template>
         </el-button>
         <span class="w-1"></span>
-        <el-button :color="primaryColor" :icon="View" style="color: #fff;"/>
+        <el-button :color="primaryColor" :icon="View" style="color: #fff;" title="预览"/>
         <span class="w-1"></span>
-        <el-button type="danger" :icon="Delete" />
+        <el-button type="danger" :icon="Delete" title="查看"/>
     </div>
 </template>
 
@@ -59,7 +59,7 @@ const screenType = ref('mobile')
 </script>
 
 <style lang="scss" scoped>
-::v-deep .el-button {
+:deep(.el-button) {
     padding: 5px;
 }
 </style>

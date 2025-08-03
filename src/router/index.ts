@@ -1,10 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
+import NProgress from 'nprogress'; // progress bar
+import 'nprogress/css/nprogress.css'; // 进度条样式
+
+NProgress.configure({ showSpinner: false }); // NProgress Configuration
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/visual-editor/index.vue'),
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+  history: createWebHashHistory(),
+  routes,
+});
 
-  ],
-})
+router.beforeEach(() => {
+  NProgress.start(); // start progress bar
+  return true;
+});
 
-export default router
+router.afterEach(() => {
+  NProgress.done(); // finish progress bar
+});
+
+export default router;

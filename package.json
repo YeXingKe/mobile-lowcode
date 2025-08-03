@@ -37,6 +37,7 @@
     "monaco-editor": "^0.52.2",
     "nanoid": "^5.1.5",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "pinia": "^3.0.3",
     "sass": "^1.89.2",
     "vant": "^4.9.21",
