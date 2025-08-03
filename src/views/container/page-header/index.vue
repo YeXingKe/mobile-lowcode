@@ -58,7 +58,7 @@ const changeTheme = (theme) => {
   currentTheme.value = theme;
 };
 
-// changeTheme(localStorage.getItem('theme') || 'default');
+changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
 

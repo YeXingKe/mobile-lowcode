@@ -8,7 +8,7 @@
         <LeftAside />
       </el-aside>
       <el-main>
-        <SimulatorEditor />
+        <SimulatorEditor :key="componentKey"/>
         <RightAside />
       </el-main>
     </el-container>
@@ -20,9 +20,21 @@ import LeftAside from '@/views/container/left-aside/index.vue'
 import PageHeader from '@/views/container/page-header/index.vue'
 import SimulatorEditor from '@/views/container/simulator-editor/index.vue'
 import RightAside from '@/views/container/right-aside'
+import { ref, watch } from 'vue'
+import { generateNanoid } from '@/utils'
+import { useVisualData } from '@/hooks/useVisualData'
+
 defineOptions({
   name: 'VisualEditor', // Vue 3.3+ 支持
 })
+const componentKey = ref(generateNanoid());
+const { currentPage } = useVisualData()
+watch(()=>currentPage.value,(val)=>{
+  // 重新赋值key，重刷组件
+  if(!Object.keys(val.blocks).length){
+    componentKey.value = generateNanoid()
+  }
+},{ deep: true } )
 </script>
 
 <style lang="scss" scoped>

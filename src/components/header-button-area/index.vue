@@ -24,9 +24,15 @@
             </template>
         </el-button>
         <span class="w-1"></span>
-        <el-button :color="primaryColor" :icon="View" style="color: #fff;" title="预览"/>
+        <el-button :color="primaryColor" :icon="View" style="color: #fff;" title="预览" />
         <span class="w-1"></span>
-        <el-button type="danger" :icon="Delete" title="查看"/>
+        <el-popconfirm width="220" confirm-button-text="确定" cancel-button-text="取消"
+            title="清空的操作不可恢复，确认清空当前编辑页面?">
+            <template #reference>
+                <!-- 阻止冒泡 -->
+                <el-button type="danger" :icon="Delete" title="清空" @click.stop="clearPageElement" />
+            </template>
+        </el-popconfirm>
     </div>
 </template>
 
@@ -37,14 +43,32 @@ import IconReturn from '../icons/IconReturn.vue';
 import IconNext from '../icons/IconNext.vue';
 import { getCssVariable, watchThemeChange } from '@/utils/theme';
 import IconExport from '../icons/IconExport.vue';
+import { useGlobalProperties } from '@/hooks/useGlobalProperties';
+import { localKey, useVisualData } from '@/hooks/useVisualData';
+import { useRouter } from 'vue-router';
 
 defineOptions({
     name: 'HeaderButtonArea',
 })
 
+const { updatePageBlock } = useVisualData()
 const primaryColor = ref('#228be6')
+const { globalProperties } = useGlobalProperties()
+// const router = useRouter();
 
-
+const clearPageElement = () => {
+  // 方法一：路由重刷
+  // 给组件重新赋值key  
+  try {
+    console.log(globalProperties.$$refs, 'globalProperties.$$refs')
+    globalProperties.$$refs = {}
+    sessionStorage.setItem(localKey,'')
+    updatePageBlock('/',[])
+    // router.replace('/') // 替换当前路由，没历史行迹
+  } catch (err) {
+    console.error('清空失败:', err);
+  }
+}
 // 初始化主题
 onMounted(() => {
     // 启动监听

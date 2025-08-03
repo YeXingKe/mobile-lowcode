@@ -58,7 +58,7 @@ const defaultValue: VisualEditorModelValue = {
 }
 
 export const initVisualData = () => {
-  const localData = JSON.parse(sessionStorage.getItem(localKey) as string)
+  const localData = JSON.parse(sessionStorage.getItem(localKey) as string) // 获取本地会话存储
   const jsonData: VisualEditorModelValue = Object.keys(localData?.pages || {}).length
     ? localData
     : defaultValue
@@ -122,8 +122,10 @@ export const initVisualData = () => {
       state.currentPage = jsonData.pages['/']
       router.replace('/')
     }
-    const currentFocusBlock = state.currentPage.blocks.find((item) => item?.focus)
-    setCurrentBlock(currentFocusBlock ?? ({} as VisualEditorBlockData))
+    if(state.currentPage && state.currentPage.blocks){
+      const currentFocusBlock = state.currentPage.blocks.find((item) => item?.focus)
+      setCurrentBlock(currentFocusBlock ?? ({} as VisualEditorBlockData))
+    }
   }
 
   // 设置当前被操作的组件
@@ -133,80 +135,82 @@ export const initVisualData = () => {
 
   // 更新pages下面的blocks
   const updatePageBlock = (path = '', blocks: VisualEditorBlockData[] = []) => {
-    state.jsonData.pages[path].blocks = blocks
-  }
-
-  /**
-   * @description 新建API接口请求
-   */
-  const incrementFetchApi = (api: FetchApiItem) => {
-    state.jsonData.actions.fetch.apis.push(api)
-  }
-
-  /**
-   * @description 删除某个API接口
-   */
-  const deleteFetchApi = (key: string) => {
-    const index = state.jsonData.actions.fetch.apis.findIndex((item) => item.key == key)
-    if (index !== -1) {
-      state.jsonData.actions.fetch.apis.splice(index, 1)
+    if(state.jsonData.pages[path]&&state.jsonData.pages[path].blocks){
+      state.jsonData.pages[path].blocks = blocks
     }
   }
 
-  /**
-   * @description 更新某个接口或者批量更新接口
-   * @param {FetchApiItem | FetchApiItem[]} api 接口
-   * @param {boolean} isCover 是否覆盖全部接口
-   */
-  const updateFetchApi = (api: FetchApiItem | FetchApiItem[], isCover = false) => {
-    const fetch = state.jsonData.actions.fetch
-    const apis = Array.isArray(api) ? api : [api]
-    if (isCover) {
-      fetch.apis = apis
-    } else {
-      apis.forEach((apiItem) => {
-        const target = fetch.apis.find((item) => item.key == apiItem.key)
-        target && Object.assign(target, api)
-      })
-    }
-  }
+  // /**
+  //  * @description 新建API接口请求
+  //  */
+  // const incrementFetchApi = (api: FetchApiItem) => {
+  //   state.jsonData.actions.fetch.apis.push(api)
+  // }
 
-  /**
-   * @description 新增模型
-   */
-  const incrementModel = (model: VisualEditorModel) => {
-    state.jsonData.models.push(model)
-  }
+  // /**
+  //  * @description 删除某个API接口
+  //  */
+  // const deleteFetchApi = (key: string) => {
+  //   const index = state.jsonData.actions.fetch.apis.findIndex((item) => item.key == key)
+  //   if (index !== -1) {
+  //     state.jsonData.actions.fetch.apis.splice(index, 1)
+  //   }
+  // }
 
-  /**
-   * @description 删除某个模型
-   */
-  const deleteModel = (key: string) => {
-    const index = state.jsonData.models.findIndex((item) => item.key == key)
-    if (index !== -1) {
-      state.jsonData.models.splice(index, 1)
-    }
-  }
+  // /**
+  //  * @description 更新某个接口或者批量更新接口
+  //  * @param {FetchApiItem | FetchApiItem[]} api 接口
+  //  * @param {boolean} isCover 是否覆盖全部接口
+  //  */
+  // const updateFetchApi = (api: FetchApiItem | FetchApiItem[], isCover = false) => {
+  //   const fetch = state.jsonData.actions.fetch
+  //   const apis = Array.isArray(api) ? api : [api]
+  //   if (isCover) {
+  //     fetch.apis = apis
+  //   } else {
+  //     apis.forEach((apiItem) => {
+  //       const target = fetch.apis.find((item) => item.key == apiItem.key)
+  //       target && Object.assign(target, api)
+  //     })
+  //   }
+  // }
 
-  /**
-   * @param { VisualEditorModel | VisualEditorModel[]} model 模型项或模型数组
-   * @param {boolean} isCover 是否覆盖所有模型
-   * @description 更新某个模型
-   */
-  const updateModel = (model: VisualEditorModel | VisualEditorModel[], isCover = false) => {
-    const jsonData = state.jsonData
-    const models = Array.isArray(model) ? model : [model]
-    if (isCover) {
-      jsonData.models = models
-    } else {
-      models.forEach((modelItem) => {
-        const index = jsonData.models.findIndex((item) => item.key == modelItem.key)
-        if (index !== -1) {
-          state.jsonData.models.splice(index, 1, modelItem)
-        }
-      })
-    }
-  }
+  // /**
+  //  * @description 新增模型
+  //  */
+  // const incrementModel = (model: VisualEditorModel) => {
+  //   state.jsonData.models.push(model)
+  // }
+
+  // /**
+  //  * @description 删除某个模型
+  //  */
+  // const deleteModel = (key: string) => {
+  //   const index = state.jsonData.models.findIndex((item) => item.key == key)
+  //   if (index !== -1) {
+  //     state.jsonData.models.splice(index, 1)
+  //   }
+  // }
+
+  // /**
+  //  * @param { VisualEditorModel | VisualEditorModel[]} model 模型项或模型数组
+  //  * @param {boolean} isCover 是否覆盖所有模型
+  //  * @description 更新某个模型
+  //  */
+  // const updateModel = (model: VisualEditorModel | VisualEditorModel[], isCover = false) => {
+  //   const jsonData = state.jsonData
+  //   const models = Array.isArray(model) ? model : [model]
+  //   if (isCover) {
+  //     jsonData.models = models
+  //   } else {
+  //     models.forEach((modelItem) => {
+  //       const index = jsonData.models.findIndex((item) => item.key == modelItem.key)
+  //       if (index !== -1) {
+  //         state.jsonData.models.splice(index, 1, modelItem)
+  //       }
+  //     })
+  //   }
+  // }
 
   // 使用自定义JSON覆盖整个项目
   const overrideProject = (jsonData) => {
@@ -219,12 +223,12 @@ export const initVisualData = () => {
     currentPage: computed(() => state.currentPage),
     currentBlock: computed(() => state.currentBlock),
     overrideProject,
-    incrementFetchApi,
-    deleteFetchApi,
-    updateFetchApi,
-    incrementModel,
-    deleteModel,
-    updateModel,
+    // incrementFetchApi,
+    // deleteFetchApi,
+    // updateFetchApi,
+    // incrementModel,
+    // deleteModel,
+    // updateModel,
     setCurrentPage,
     setCurrentBlock,
     updatePage,

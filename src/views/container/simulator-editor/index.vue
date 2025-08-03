@@ -60,7 +60,7 @@ import { generateNanoid } from '@/utils'
 import { cloneDeep } from 'lodash-es'
 import { $$dropdown, DropdownOption } from '@/utils/dropdown-service'
 import type { VisualEditorBlockData } from '@/utils/visual-editor'
-import { ref, watchEffect } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import { useModal } from '@/hooks/useModal'
 import MonacoEditor from '@/components/monaco-editor'
 import CompRender from '@/views/comp-render'
@@ -70,14 +70,15 @@ import DraggableTransition from '@/components/common/draggable-transition/index.
 defineOptions({
   name: 'SimulatorEditor',
 })
-
 const { currentPage, setCurrentBlock } = useVisualData()
 const { globalProperties } = useGlobalProperties()
 const drag = ref(false)
+
 /**
  * @description 操作当前页面样式表
  */
 watchEffect(() => {
+  // 自动追踪依赖并执行副作用函数
   const { bgImage, bgColor } = currentPage.value.config
   const bodyStyleStr = `
       .simulator-editor-content {
