@@ -1,27 +1,39 @@
 <template>
   <el-row type="flex" class="header">
-    <el-col :span="6"></el-col>
-    <el-col :span="12"></el-col>
-    <el-col :span="6" class="flex justify-end w-1/1" style="display: flex">
-      <el-popover placement="bottom" :width="165" trigger="click">
-        <el-button v-for="item in themeList" :key="item.className" :color="item.color" @click="setTheme(item.className)"
-          :title="item.label" style="margin: 0;margin: 5px;"></el-button>
-        <template #reference>
-          <IconTheme class="cursor-pointer" />
-        </template>
-      </el-popover>
-      <IconRun class="cursor-pointer ml-2" @click="clickRun" title="真机运行" />
-      <IconGithub class="cursor-pointer ml-2" @click="clickGithub" title="github仓库" />
+    <el-col :span="6">
+      <div class="flex items-center h-1/1">
+        <IconMason />
+        <p class="ml-2 flex items-center">Mobile LowCode</p>
+      </div>
+    </el-col>
+    <el-col :span="12" class="h-1/1">
+      <header-button-area />
+    </el-col>
+    <el-col :span="6">
+      <div class="flex justify-end items-center h-1/1">
+        <el-popover placement="bottom" :width="165" trigger="click">
+          <el-button v-for="item in themeList" :key="item.className" :color="item.color" @click="changeTheme(item.className)"
+            :title="item.label" style="margin: 0;margin: 5px;"></el-button>
+          <template #reference>
+            <IconTheme class="cursor-pointer" />
+          </template>
+        </el-popover>
+        <IconRun class="cursor-pointer ml-2" @click="clickRun" title="真机运行" />
+        <IconGithub class="cursor-pointer ml-2" @click="clickGithub" title="github仓库" />        
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <script lang="ts" setup>
+import HeaderButtonArea from '@/components/header-button-area/index.vue'
 import IconRun from '@/components/icons/IconRun.vue'
 import pkg from '../../../../package.json'
 import IconGithub from '@/components/icons/IconGithub.vue'
 import IconTheme from '@/components/icons/IconTheme.vue'
 import { reactive, ref } from 'vue'
+import IconMason from '@/components/icons/IconMason.vue'
+import { setTheme } from '@/utils/theme'
 
 defineOptions({
   name: 'PageHeader',
@@ -41,13 +53,12 @@ const themeList = reactive([
 const currentTheme = ref('default');
 
 // 设置主题
-const setTheme = (theme) => {
-  document.documentElement.setAttribute('data-theme', theme);
+const changeTheme = (theme) => {
+  setTheme(theme)
   currentTheme.value = theme;
-  localStorage.setItem('theme', theme);
 };
 
-setTheme(localStorage.getItem('theme') || 'default');
+changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
 

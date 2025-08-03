@@ -263,10 +263,6 @@ const onContextmenuBlock = (
   background-clip: content-box;
   contain: layout;
 
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
   &-content {
     height: 100%;
     transform: translate(0);
@@ -275,6 +271,15 @@ const onContextmenuBlock = (
     // box-shadow: 0 8px 12px #ebedf0;
     border-radius: 15px;
     box-shadow: 0 0 1px 10px #495060;
+
+    &::-webkit-scrollbar {
+    width: 8px;
+    }
+   /* 滚动条滑块 */
+    &::-webkit-scrollbar-thumb {
+      background-color: #d1d0d0; 
+      border-radius: 4px;
+    }
   }
 }
 

@@ -2,18 +2,30 @@
 @use "./theme.scss";
 
 .lowcode-container {
-  ::v-deep {
-    .el-tabs__item.is-active,
-    .el-tabs__item.is-hover,
-    .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
-      color: var(--primary-color) !important;
-    }
+  --header-height: 60px;
+  
+  .el-tabs__item.is-active,
+  .el-tabs__item:hover,
+  .el-radio-button__inner:hover,
+  .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active{
+    color: var(--primary-color) !important;
+  }
+  .el-tabs__active-bar,
+  .el-radio-button.is-active .el-radio-button__original-radio:not(:disabled)+.el-radio-button__inner
+  {
+    background-color: var(--primary-color);
+  }
+  .el-radio-button.is-active .el-radio-button__original-radio:not(:disabled)+.el-radio-button__inner{
+    border-color:var(--primary-color);
+  }
+  .el-switch
+  {
+    --el-switch-on-color: var(--primary-color);
+  }
+  .el-radio-button {
+    --el-radio-button-checked-bg-color: var(--primary-color);
+    --el-radio-button-checked-text-color: var(--el-color-white);
+    --el-radio-button-checked-border-color: var(--primary-color);
+    --el-radio-button-disabled-checked-fill: var(--el-border-color-extra-light);
   }
 }
-  // ::v-deep {
-  //   .el-tabs__item.is-active,
-  //   .el-tabs__item.is-hover,
-  //   .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
-  //     color: var(--primary-color) !important;
-  //   }
-  // }

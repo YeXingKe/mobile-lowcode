@@ -10,6 +10,9 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({
+  name: 'IconTheme',
+})
 const props = withDefaults(
     defineProps<{
         width?: number

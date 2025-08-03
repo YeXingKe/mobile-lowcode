@@ -20,6 +20,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+defineOptions({
+  name: 'IconGithub',
+})
 const props = withDefaults(
   defineProps<{
     width?: number

@@ -13,6 +13,9 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({
+  name: 'IconRun',
+})
 const props = withDefaults(
     defineProps<{
         width?: number

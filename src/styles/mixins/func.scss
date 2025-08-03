@@ -28,19 +28,19 @@
   @if ($direction == 'left') {
     top: 0;
     left: -3px;
-    transform: translate(-100%, 0);
+    // transform: translate(-100%, 0);
   }
 
   @if ($direction == 'right') {
     top: 0;
     right: -3px;
-    transform: translate(100%, 0);
+    // transform: translate(100%, 0);
   }
 
   @if ($direction == 'top') {
     top: 2px;
     left: 0;
-    transform: translate(0, -100%);
+    // transform: translate(0, -100%);
   }
 
   position: absolute;
@@ -48,7 +48,8 @@
   font-size: 12px;
   font-weight: 700;
   color: white;
-  background-color: #006eff;
+  z-index:1000;
+  background-color: var(--primary-color);
   border-radius: 3px;
   content: attr(data-label);
 }
