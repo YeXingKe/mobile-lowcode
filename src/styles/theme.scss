@@ -1,0 +1,72 @@
+@use './variables/base-color.scss';
+
+// 定义主题映射
+$themes: (
+  "light": (
+    primary-color: var(--oc-blue-6),
+    secondary-color: var(--oc-blue-0),
+    bg-color: var(--oc-white),
+    text-color: var(--oc-gray-8),
+    border-color: var(--oc-blue-5)
+  ),
+  "dark": (
+    primary-color: var(oc-gray-9),
+    secondary-color:  var(oc-gray-7),
+    bg-color: var(--oc-gray-6), // #1a1a1a
+    text-color: var(--oc-gray-4),
+    border-color: var(--oc-gray-5)
+  ),
+  "orange": (
+    primary-color: var(--oc-orange-5),
+    secondary-color: var(--oc-orange-0),
+    bg-color: var(--oc-orange-0), // #1a1a1a
+    text-color: var(--oc-orange-4),
+    border-color: var(--oc-orange-5)
+  ),
+  "blue": (
+    primary-color: var(--oc-indigo-6),
+    secondary-color: var(--oc-violet-0),
+    bg-color: var(--oc-violet-0),
+    text-color: var(--oc-indigo-8),
+    border-color: var(--oc-indigo-4)
+  ),
+  "violet":(
+    primary-color: var(--oc-violet-9),
+    secondary-color: var(--oc-violet-0),
+    bg-color: var(--oc-white),
+    text-color: var(--oc-indigo-8),
+    border-color: var(--oc-violet-8)
+  ),
+  "pink":(
+    primary-color: var(--oc-pink-7),
+    secondary-color: var(--oc-pink-0),
+    bg-color: var(--oc-pink-0),
+    text-color: var(--oc-pink-9),
+    border-color: var(--oc-pink-8)
+  ),
+  "green":(
+    primary-color: var(--oc-green-9),
+    secondary-color: var(--oc-green-0),
+    bg-color: var(--secondary-color),
+    text-color: var(--oc-green-9),
+    border-color: var(--oc-green-8)
+  ),
+  "default":(
+    primary-color: var(--oc-blue-6),
+    secondary-color: var(--oc-blue-0),
+    bg-color: var(--oc-white),
+    text-color: var(--oc-gray-4),
+    border-color: var(--oc-gray-3)
+  )
+);
+
+// 将SCSS变量转换为CSS变量
+:root {
+  @each $theme, $map in $themes { // 遍历所有主题,$theme主题，$map键值对
+    &[data-theme="#{$theme}"] {  // 属性选择器
+      @each $key, $value in $map { // 遍历当前主题的所有变量
+        --#{$key}: #{$value};
+      }
+    }
+  }
+}

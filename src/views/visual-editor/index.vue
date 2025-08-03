@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="lowcode-container">
     <el-header height="80px" class="flex items-center shadow-md">
       <PageHeader />
     </el-header>

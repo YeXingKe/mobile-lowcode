@@ -3,18 +3,55 @@
     <el-col :span="6"></el-col>
     <el-col :span="12"></el-col>
     <el-col :span="6" class="flex justify-end w-1/1" style="display: flex">
-      <IconGithub class="cursor-pointer" @click="clickGithub" />
+      <el-popover placement="bottom" :width="165" trigger="click">
+        <el-button v-for="item in themeList" :key="item.className" :color="item.color" @click="setTheme(item.className)"
+          :title="item.label" style="margin: 0;margin: 5px;"></el-button>
+        <template #reference>
+          <IconTheme class="cursor-pointer" />
+        </template>
+      </el-popover>
+      <IconRun class="cursor-pointer ml-2" @click="clickRun" title="真机运行" />
+      <IconGithub class="cursor-pointer ml-2" @click="clickGithub" title="github仓库" />
     </el-col>
   </el-row>
 </template>
 
 <script lang="ts" setup>
+import IconRun from '@/components/icons/IconRun.vue'
 import pkg from '../../../../package.json'
 import IconGithub from '@/components/icons/IconGithub.vue'
+import IconTheme from '@/components/icons/IconTheme.vue'
+import { reactive, ref } from 'vue'
 
 defineOptions({
   name: 'PageHeader',
 })
+
+const themeList = reactive([
+  { className: 'default', label: '默认', color: '#228be6' },
+  { className: 'dark', label: '暗黑', color: '#212529' },
+  // { className: 'light', label: '明亮', color: '#228be6' },
+  { className: 'orange', label: '橙意', color: '#ff922b' },
+  { className: 'green', label: '清新', color: '#2b8a3e' },
+  { className: 'pink', label: '鲜艳', color: '#d6336c' },
+  { className: 'violet', label: '淡雅', color: '#5f3dc4' },
+  { className: 'blue', label: '清幽', color: '#4c6ef5' },
+])
+
+const currentTheme = ref('default');
+
+// 设置主题
+const setTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  currentTheme.value = theme;
+  localStorage.setItem('theme', theme);
+};
+
+setTheme(localStorage.getItem('theme') || 'default');
+
+const clickRun = () => {
+
+}
 
 const clickGithub = () => {
   window.open(pkg.repository.url, '_blank')
@@ -24,6 +61,10 @@ const clickGithub = () => {
 <style lang="scss" scoped>
 .header {
   width: 100%;
+
+  :deep(.el-button+.el-button){
+    margin: 0 !important;
+  }
 
   .logo {
     width: 60px;
@@ -44,7 +85,7 @@ const clickGithub = () => {
     font-size: 22px;
   }
 
-  .right-tools > * {
+  .right-tools>* {
     margin-left: 8px;
   }
 }

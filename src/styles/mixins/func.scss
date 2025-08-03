@@ -58,7 +58,7 @@
       */
 
 @mixin showSoliOutline($width: 2px) {
-  outline: $width solid #006eff;
+  outline: $width solid var(--primary-color);
   outline-offset: -2px;
 }
 

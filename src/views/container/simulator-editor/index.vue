@@ -256,7 +256,7 @@ const onContextmenuBlock = (
   height: 740px;
   min-width: 660px;
   padding: 60px 150px 0;
-  overflow: hidden auto;
+  // overflow: hidden scroll;
   background: #fafafa;
   border-radius: 5px;
   box-sizing: border-box;
@@ -268,9 +268,13 @@ const onContextmenuBlock = (
   }
 
   &-content {
-    min-height: 100%;
+    height: 100%;
     transform: translate(0);
-    box-shadow: 0 8px 12px #ebedf0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    // box-shadow: 0 8px 12px #ebedf0;
+    border-radius: 15px;
+    box-shadow: 0 0 1px 10px #495060;
   }
 }
 
