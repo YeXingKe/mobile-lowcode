@@ -24,7 +24,7 @@ const props = withDefaults(
 )
 
 
-const primaryColor = ref('#228be6')
+const primaryColor = ref(getCssVariable('--primary-color'))
 
 
 // 初始化主题

@@ -41,18 +41,17 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { Delete, View } from '@element-plus/icons-vue';
 import IconReturn from '../icons/IconReturn.vue';
 import IconNext from '../icons/IconNext.vue';
-import { getCssVariable, watchThemeChange } from '@/utils/theme';
+import { getCssVariable, setTheme, watchThemeChange } from '@/utils/theme';
 import IconExport from '../icons/IconExport.vue';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
 import { localKey, useVisualData } from '@/hooks/useVisualData';
-import { useRouter } from 'vue-router';
 
 defineOptions({
     name: 'HeaderButtonArea',
 })
 
 const { updatePageBlock } = useVisualData()
-const primaryColor = ref('#228be6')
+const primaryColor = ref(getCssVariable('--primary-color'))
 const { globalProperties } = useGlobalProperties()
 // const router = useRouter();
 
