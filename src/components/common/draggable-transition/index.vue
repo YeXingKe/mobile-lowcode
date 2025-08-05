@@ -1,8 +1,8 @@
 <template>
   <draggable
     v-model="list"
-    class="dragArea list-group"
-    :class="{ isDrag }"
+    class="dragArea"
+    :class="[isDrag, `listGroup${layoutTypeStore.layoutType}`]"
     :component-data="{
       tag: 'ul',
       type: 'transition-group',
@@ -26,6 +26,7 @@
 import draggable from 'vuedraggable'
 import { useVModel } from '@vueuse/core' // 自定义 “双向绑定” hook
 import { computed, useAttrs } from 'vue'
+import { useLayoutTypeStore } from '@/stores/layoutType';
 
 defineOptions({
   name: 'DraggableTransition',
@@ -45,6 +46,10 @@ const emit = defineEmits(['update:modelValue', 'update:drag'])
 const list = useVModel(props, 'modelValue', emit)
 const isDrag = useVModel(props, 'drag', emit)
 const attrs = useAttrs() // 等同于$attr
+
+const layoutTypeStore = useLayoutTypeStore()
+
+console.log('改了吗456',layoutTypeStore.layoutType)
 
 const dragOptions = computed(() => ({
   animation: 200,
@@ -78,5 +83,19 @@ const dragOptions = computed(() => ({
   &.isDrag:not(.no-child) :deep(.listGroupItem.has-slot) {
     @include showContainerBorder;
   }
+}
+
+.listGroupSingle {
+  @extend .listGroup
+}
+
+.listGroupGrid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-right: 20px;
+  box-sizing: border-box;
+  
+  @extend .listGroup
 }
 </style>

@@ -1,10 +1,12 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watchEffect } from 'vue'
 import { Edit } from '@element-plus/icons-vue'
 import { cloneDeep } from 'lodash-es'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
 import styles from './index.module.scss'
 import { createNewBlock } from '@/utils/visual-editor'
 import { visualConfig } from '@/utils/visual.config'
+import { useLayoutTypeStore } from '@/stores/layoutType'
+import { LayoutTypeEnum } from '@/enums'
 
 export default defineComponent({
   name: 'BaseWidgets',
@@ -17,6 +19,8 @@ export default defineComponent({
       const newComp = cloneDeep(comp)
       return createNewBlock(newComp)
     }
+
+    const layoutTypeStore = useLayoutTypeStore() // 直接解构会丢失响应性
 
     const log = (evt) => {
       // 浏览器提供的调试输出方法
@@ -38,7 +42,7 @@ export default defineComponent({
         >
           {{
             item: ({ element }) => (
-              <div class={styles.listGroupItem} data-label={element.label}>
+              <div class={[styles.listGroupItem,styles[`listGroupItem${layoutTypeStore.layoutType}`]]} data-label={element.label} >
                 {element.preview()}
               </div>
             ),

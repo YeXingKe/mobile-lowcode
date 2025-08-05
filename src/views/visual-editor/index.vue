@@ -4,7 +4,7 @@
       <PageHeader />
     </el-header>
     <el-container class="layout-container">
-      <el-aside class="shadow-sm" width="380px">
+      <el-aside class="shadow-sm" :width="listGroupWidth">
         <LeftAside />
       </el-aside>
       <el-main>
@@ -20,9 +20,11 @@ import LeftAside from '@/views/container/left-aside/index.vue'
 import PageHeader from '@/views/container/page-header/index.vue'
 import SimulatorEditor from '@/views/container/simulator-editor/index.vue'
 import RightAside from '@/views/container/right-aside'
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { generateNanoid } from '@/utils'
 import { useVisualData } from '@/hooks/useVisualData'
+import { useLayoutTypeStore } from '@/stores/layoutType'
+import { LayoutTypeEnum } from '@/enums'
 
 defineOptions({
   name: 'VisualEditor', // Vue 3.3+ 支持
@@ -35,6 +37,16 @@ watch(()=>currentPage.value,(val)=>{
     componentKey.value = generateNanoid()
   }
 },{ deep: true } )
+
+const layoutTypeStore = useLayoutTypeStore()
+const listGroupWidth = ref('380px')
+watch(()=>layoutTypeStore.layoutType,(val)=>{
+  if(val && val === LayoutTypeEnum.Single){
+    listGroupWidth.value = '380px'
+  }else{
+    listGroupWidth.value = '450px'
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +62,7 @@ watch(()=>currentPage.value,(val)=>{
 
 .el-aside {
   background-color: white;
+  transition: width 0.3s ease-out; // 宽度变化添加动画使其不抖动
 }
 
 .layout-container {

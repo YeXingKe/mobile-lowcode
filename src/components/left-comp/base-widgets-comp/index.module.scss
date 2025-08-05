@@ -1,8 +1,15 @@
+
+.listGroupItemSingle{
+  width:calc(100% - 20px);
+  min-height:120px;
+}
+.listGroupItemGrid{
+  width:150px;
+  min-height:80px
+}
 .listGroupItem {
   position: relative;
   display: flex;
-  width: calc(100% - 20px);
-  min-height: 120px;
   padding: 0 5px;
   margin-top: 20px;
   margin-left: 10px;

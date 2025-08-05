@@ -1,9 +1,9 @@
 <template>
     <div class="flex justify-between items-end h-1/1 mb-2">
         <div class="flex items-end h-1/1">
-            <el-radio-group v-model="compLayoutType">
-                <el-radio-button label="single" title="单行布局"></el-radio-button>
-                <el-radio-button label="grid" title="栅格布局"></el-radio-button>
+            <el-radio-group v-model="compLayoutType" @change="changeCompLayoutType($event)">
+                <el-radio-button label="Single" title="单行布局"></el-radio-button>
+                <el-radio-button label="Grid" title="栅格布局"></el-radio-button>
             </el-radio-group>
             <span class="w-1"></span>
             <el-radio-group v-model="screenType" style="display: flex;align-items: end;height: var(--header-height);">
@@ -63,12 +63,14 @@ import { getCssVariable, setTheme, watchThemeChange } from '@/utils/theme';
 import IconExport from '../icons/IconExport.vue';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
 import { localKey, useVisualData } from '@/hooks/useVisualData';
+import { useLayoutTypeStore } from '@/stores/layoutType';
+import { LayoutTypeEnum } from '@/enums';
 
 defineOptions({
     name: 'HeaderButtonArea',
 })
 
-const compLayoutType = ref('single')
+const compLayoutType = ref(LayoutTypeEnum.Single)
 const { updatePageBlock,jsonData } = useVisualData()
 const primaryColor = ref(getCssVariable('--primary-color'))
 const { globalProperties } = useGlobalProperties()
@@ -94,6 +96,12 @@ const clickH5Preview = () => {
     localStorage.setItem(localKey, JSON.stringify(jsonData));
     isShowH5Preview.value = true;
 };
+
+const layoutTypeStore = useLayoutTypeStore()
+const changeCompLayoutType = (value)=>{
+    console.log('没有触发吗',value)
+    layoutTypeStore.changeLayoutType(value)
+}
 
 // 初始化主题
 onMounted(() => {
