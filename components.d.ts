@@ -17,6 +17,7 @@ declare module 'vue' {
     ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMain: typeof import('element-plus/es')['ElMain']
@@ -27,6 +28,8 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    H5Preview: typeof import('./src/components/preview/h5Preview.vue')['default']
     HeaderButtonArea: typeof import('./src/components/header-button-area/index.vue')['default']
     IconExport: typeof import('./src/components/icons/IconExport.vue')['default']
     IconGithub: typeof import('./src/components/icons/IconGithub.vue')['default']
@@ -35,7 +38,9 @@ declare module 'vue' {
     IconReturn: typeof import('./src/components/icons/IconReturn.vue')['default']
     IconRun: typeof import('./src/components/icons/IconRun.vue')['default']
     IconTheme: typeof import('./src/components/icons/IconTheme.vue')['default']
+    MobileH5Preview: typeof import('./src/components/preview/mobileH5Preview.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TextTip: typeof import('./src/components/common/text-tip/index.vue')['default']
   }
 }

@@ -11,15 +11,19 @@
     </el-col>
     <el-col :span="4">
       <div class="flex justify-end items-center h-1/1">
-        <el-popover placement="bottom" :width="165" trigger="click">
-          <el-button v-for="item in themeList" :key="item.className" :color="item.color" @click="changeTheme(item.className)"
-            :title="item.label" style="margin: 0;margin: 5px;"></el-button>
+        <el-popover placement="bottom" :width="165" trigger="hover">
+          <el-button v-for="item in themeList" :key="item.className" :color="item.color"
+            @click="changeTheme(item.className)" :title="item.label" style="margin: 0;margin: 5px;"></el-button>
           <template #reference>
-            <IconTheme class="cursor-pointer" />
+              <IconTheme class="cursor-pointer"  title="主题切换"/>
           </template>
         </el-popover>
-        <IconRun class="cursor-pointer ml-2" @click="clickRun" title="真机运行" />
-        <IconGithub class="cursor-pointer ml-2" @click="clickGithub" title="github仓库" />        
+        <TextTip content="真机预览">
+          <IconRun class="cursor-pointer ml-2" @click="clickRun" />
+        </TextTip>
+        <TextTip content="github仓库">
+          <IconGithub class="cursor-pointer ml-2" @click="clickGithub" />
+        </TextTip>
       </div>
     </el-col>
   </el-row>
@@ -73,7 +77,7 @@ const clickGithub = () => {
 .header {
   width: 100%;
 
-  :deep(.el-button+.el-button){
+  :deep(.el-button+.el-button) {
     margin: 0 !important;
   }
 

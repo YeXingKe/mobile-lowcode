@@ -6,6 +6,24 @@ import { generateNanoid } from '.'
 import type { ContentTypeEnum, RequestEnum } from '@/enums/httpEnum'
 
 /**
+ * @description 动画项
+ */
+export type Animation = {
+  /** 动画名称 */
+  label: string;
+  /** 动画类名 */
+  value: string;
+  /** 动画持续时间 */
+  duration: number;
+  /** 动画延迟多久执行 */
+  delay: number;
+  /** 动画执行次数 */
+  count: number;
+  /** 是否无限循环动画 */
+  infinite: boolean;
+};
+
+/**
  * @description 组件动作事件处理
  */
 export type ActionHandle = {
