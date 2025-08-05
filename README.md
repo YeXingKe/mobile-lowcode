@@ -66,7 +66,7 @@ docs：仅文档新增/改动
 chore：构建过程或辅助工具的变动
 ```
 ## 📩 Issue发布
-- bug issue发布示例：![bug_report.md](.github/ISSUE_TEMPLATE/bug-report.md)
-- 功能或优化issue发布示例：![bug_report.md](.github/ISSUE_TEMPLATE/feature-request.md)
+- bug issue发布示例：[bug_report.md](.github/ISSUE_TEMPLATE/bug-report.md)
+- 功能或优化issue发布示例：[bug_report.md](.github/ISSUE_TEMPLATE/feature-request.md)
 ## 📜 许可证
-[MIT](LICENSE) © 2023 [YeXingKe]
+[MIT](LICENSE) © 2025 [YeXingKe]
