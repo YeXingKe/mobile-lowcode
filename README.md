@@ -47,24 +47,7 @@ pnpm dev
 
 
 ## 🤝 贡献指南
-1. 基于develop进行Fork 项目
-2. 创建分支 (`git checkout -b feat/新功能`)
-3. 提交更改 (`git commit -m 'feat:添加新功能'`)
-4. 推送分支 (`git push origin feat/新功能`)
-5. 发起 Pull Request
-
-```
-/** 提交type */
-build 编译相关的修改，例如发布版本、对项目构建或者依赖的改动
-feature(feat)：新功能
-update：更新某功能
-fixbug(fix)：修补某功能的bug
-refactor：重构某个功能
-optimize: 优化构建工具或运行时性能
-style：仅样式改动
-docs：仅文档新增/改动
-chore：构建过程或辅助工具的变动
-```
+- 贡献指南：[CONTRIBUTING.md](.github/CONTRIBUTING.md)
 ## 📩 Issue发布
 - bug issue发布示例：[bug_report.md](.github/ISSUE_TEMPLATE/bug-report.md)
 - 功能或优化issue发布示例：[bug_report.md](.github/ISSUE_TEMPLATE/feature-request.md)
