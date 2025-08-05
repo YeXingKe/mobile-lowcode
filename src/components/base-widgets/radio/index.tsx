@@ -1,7 +1,7 @@
 import { useGlobalProperties } from "@/hooks/useGlobalProperties";
 import { createEditorCrossSortableProp, createEditorInputProp, createEditorModelBindProp, createEditorSelectProp } from "@/utils/visual-editor-props";
 import { Field, Radio, RadioGroup } from "vant";
-import { createFieldProps } from "./createFieldProps";
+import { createFieldProps } from "../createFieldProps";
 
 export default {
     key: 'radio',

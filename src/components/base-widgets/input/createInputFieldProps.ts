@@ -4,8 +4,9 @@ import {
   createEditorSelectProp,
   createEditorSwitchProp,
 } from '@/utils/visual-editor-props'
+import { createFieldProps } from '../createFieldProps'
 
-export const createFieldProps = () => ({
+export const createInputFieldProps = () => ({
   modelValue: createEditorInputProp({
     label: '默认值',
     defaultValue: '',
@@ -25,32 +26,9 @@ export const createFieldProps = () => ({
     defaultValue: 'text',
   }),
   placeholder: createEditorInputProp({ label: '占位提示文字', defaultValue: '请输入' }),
-  colon: createEditorSwitchProp({ label: '是否在 label 后面添加冒号' }),
   disabled: createEditorSwitchProp({ label: '是否禁用输入框' }),
   error: createEditorSwitchProp({ label: '是否将输入内容标红' }),
-  'error-message': createEditorInputProp({ label: '底部错误提示文案' }),
-  'error-message-align': createEditorSelectProp({
-    label: '错误提示文案对齐方式',
-    options: [
-      {
-        label: '左对齐',
-        value: 'left',
-      },
-      {
-        label: '居中',
-        value: 'center',
-      },
-      {
-        label: '右对齐',
-        value: 'right',
-      },
-    ],
-    defaultValue: 'left',
-  }),
-  readonly: createEditorSwitchProp({ label: '是否为只读状态' }),
-  required: createEditorSwitchProp({ label: '是否显示表单必填星号' }),
   'right-icon': createEditorInputProp({ label: '右侧图标名称或图片链接' }),
-  rules: createEditorInputProp({ label: '表单校验规则' }),
   'left-icon': createEditorInputProp({ label: '左侧图标名称或图片链接' }),
   'arrow-direction': createEditorInputProp({
     label: '箭头方向',
@@ -62,7 +40,6 @@ export const createFieldProps = () => ({
     defaultValue: false,
     tips: '是否自适应内容高度，只对 textarea 有效，可传入对象,如 { maxHeight: 100, minHeight: 50 }，单位为px',
   }),
-  border: createEditorSwitchProp({ label: '是否显示内边框', defaultValue: true }),
   center: createEditorSwitchProp({ label: '内容垂直居中' }),
   'clear-icon': createEditorInputProp({
     label: '清除图标',
@@ -131,4 +108,5 @@ export const createFieldProps = () => ({
     label: '是否显示字数统计',
     tips: '需要设置 maxlength 属性',
   }),
+  ...createFieldProps()
 })

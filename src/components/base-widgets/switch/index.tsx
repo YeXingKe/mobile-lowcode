@@ -1,7 +1,7 @@
 import { useGlobalProperties } from "@/hooks/useGlobalProperties";
 import { createEditorInputProp, createEditorModelBindProp } from "@/utils/visual-editor-props";
 import { Field, Switch } from "vant";
-import { createFieldProps } from "./createFieldProps";
+import { createFieldProps } from "../createFieldProps";
 
 export default {
     key: 'switch',

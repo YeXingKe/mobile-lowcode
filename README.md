@@ -1,16 +1,14 @@
 # 低代码平台 🚀
 
 ![项目徽章](https://img.shields.io/badge/版本-1.0.0-blue)
-![License](https://img.shields.io/github/license/用户名/仓库名)
+![License](https://img.shields.io/github/license/YeXingKe/mobile-lowcode)
 
 > 一句话描述项目的核心价值
-
+- 示例：https://yexingke.github.io/mobile-lowcode/
 ## 📌 目录
 - [功能特性](#✨-功能特性)
 - [快速开始](#🚀-快速开始)
 - [安装指南](#🔧-安装指南)
-- [使用示例](#🎯-使用示例)
-- [配置说明](#⚙️-配置说明)
 - [贡献指南](#🤝-贡献指南)
 - [许可证](#📜-许可证)
 
@@ -27,55 +25,44 @@
 ## 🚀 快速开始
 ```bash
 # 最小化运行示例
-npm install
-npm start
+pnpm i
+pnpm dev
 ```
 
 ## 🔧 安装指南
 ### 环境要求
 - Node.js >= 20.12.0
-- Python 3.8+
 
 ### 安装步骤
 1. 克隆仓库：
    ```bash
-   git clone https://github.com/用户名/仓库.git
+   git clone https://github.com/YeXingKe/mobile-lowcode.git
    ```
 2. 安装依赖：
    ```bash
-   cd 项目目录 && pip install -r requirements.txt
+   cd mobile-lowcode
+   pnpm i 
    ```
 
-## 🎯 使用示例
-### 基础用法
-```python
-from package import Module
-instance = Module()
-print(instance.method())
-```
-
-### 高级用法（带流程图）
-```mermaid
-graph TD
-    A[输入] --> B{判断}
-    B -->|条件1| C[结果1]
-    B -->|条件2| D[结果2]
-```
-
-## ⚙️ 配置说明
-通过 `config.yaml` 配置：
-```yaml
-server:
-  port: 8080
-  logging: true
-```
 
 ## 🤝 贡献指南
-1. Fork 项目
+1. 基于develop进行Fork 项目
 2. 创建分支 (`git checkout -b feat/新功能`)
-3. 提交更改 (`git commit -m '添加新功能'`)
+3. 提交更改 (`git commit -m 'feat:添加新功能'`)
 4. 推送分支 (`git push origin feat/新功能`)
 5. 发起 Pull Request
 
+```
+/** 提交type */
+build 编译相关的修改，例如发布版本、对项目构建或者依赖的改动
+feature(feat)：新功能
+update：更新某功能
+fixbug(fix)：修补某功能的bug
+refactor：重构某个功能
+optimize: 优化构建工具或运行时性能
+style：仅样式改动
+docs：仅文档新增/改动
+chore：构建过程或辅助工具的变动
+```
 ## 📜 许可证
-[MIT](LICENSE) © 2023 [你的名字]
+[MIT](LICENSE) © 2023 [YeXingKe]

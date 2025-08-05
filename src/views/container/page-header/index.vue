@@ -1,15 +1,15 @@
 <template>
   <el-row type="flex" class="header">
-    <el-col :span="6">
+    <el-col :span="4" class="flex">
       <div class="flex items-center h-1/1">
         <IconMason />
         <p class="ml-2 flex items-center">Mobile LowCode</p>
       </div>
     </el-col>
-    <el-col :span="12" class="h-1/1">
+    <el-col :span="16" class="h-1/1">
       <header-button-area />
     </el-col>
-    <el-col :span="6">
+    <el-col :span="4">
       <div class="flex justify-end items-center h-1/1">
         <el-popover placement="bottom" :width="165" trigger="click">
           <el-button v-for="item in themeList" :key="item.className" :color="item.color" @click="changeTheme(item.className)"

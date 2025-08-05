@@ -1,5 +1,5 @@
 import { Field } from 'vant'
-import { createFieldProps } from './createFieldProps'
+import { createInputFieldProps } from './createInputFieldProps'
 import { useGlobalProperties } from '@/hooks/useGlobalProperties'
 import type { VisualEditorComponent } from '@/utils/visual-editor'
 
@@ -39,7 +39,7 @@ export default {
     { label: '点击左侧图标时触发', value: 'click-left-icon' },
     { label: '点击右侧图标时触发', value: 'click-right-icon' },
   ],
-  props: createFieldProps(),
+  props: createInputFieldProps(),
   resize: {
     width: true,
   },
