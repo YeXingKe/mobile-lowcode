@@ -10,6 +10,7 @@
 - [快速开始](#🚀-快速开始)
 - [安装指南](#🔧-安装指南)
 - [贡献指南](#🤝-贡献指南)
+- [Issue发布](#📩-Issue发布)
 - [许可证](#📜-许可证)
 
 ## ✨ 功能特性
@@ -64,5 +65,8 @@ style：仅样式改动
 docs：仅文档新增/改动
 chore：构建过程或辅助工具的变动
 ```
+## 📩 Issue发布
+- bug issue发布示例：![bug_report.md](.github/ISSUE_TEMPLATE/bug-report.md)
+- 功能或优化issue发布示例：![bug_report.md](.github/ISSUE_TEMPLATE/feature-request.md)
 ## 📜 许可证
 [MIT](LICENSE) © 2023 [YeXingKe]
