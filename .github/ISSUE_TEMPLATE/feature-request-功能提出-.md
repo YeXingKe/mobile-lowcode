@@ -1,5 +1,5 @@
 ---
-name: Feature request（功能提出）
+name: Feature request
 about: Suggest an idea for this project
 title: ''
 labels: ''
