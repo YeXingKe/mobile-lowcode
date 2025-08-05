@@ -1,5 +1,5 @@
 {
-  "name": "demo-app",
+  "name": "mobile-lowcode",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -55,6 +55,7 @@
     "@types/node": "^22.15.32",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
+    "@vitejs/plugin-legacy": "^7.1.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vitest/eslint-plugin": "^1.2.7",
     "@vue/eslint-config-prettier": "^10.2.0",
@@ -63,7 +64,6 @@
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-define-config": "^2.1.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-vue": "~10.2.0",

@@ -18,6 +18,7 @@ import type { FetchApiItem, VisualEditorActions, VisualEditorBlockData, VisualEd
 import request from '../utils/request';
 import { ContentTypeEnum } from '@/enums/httpEnum';
 import { useAnimate } from '@/hooks/useAnimate';
+import { AxiosHeaders } from 'axios';
 
   export default defineComponent({
     name: 'SlotItem',
@@ -49,9 +50,9 @@ import { useAnimate } from '@/hooks/useAnimate';
               // const pramsObj = {};
               await request({
                 ...options,
-                headers: {
+                headers: new AxiosHeaders({
                   'Content-Type': ContentTypeEnum[options.contentType],
-                },
+                }),
                 data: {
                   username: 'admin',
                   password: '123456',

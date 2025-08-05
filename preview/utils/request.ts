@@ -1,4 +1,4 @@
-import axios, { type AxiosRequestConfig } from 'axios';
+import axios, { type AxiosRequestConfig,type InternalAxiosRequestConfig } from 'axios';
 import qs from 'qs';
 // import store from '@/store'
 import { Toast } from 'vant';
@@ -11,7 +11,7 @@ const service = axios.create({
   withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000, // request timeout
 });
-interface CustomAxiosRequestConfig extends AxiosRequestConfig {
+interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig  {
   hideLoading?: boolean;
 }
 

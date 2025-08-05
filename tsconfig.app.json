@@ -37,7 +37,7 @@
     "strictFunctionTypes": false,
     // "jsxFactory": "h",
     // "jsxFragmentFactory": "Fragment",
-    "types": ["element-plus", "vite/client"],
+    "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     "paths": {
       "@/*": ["./src/*"]
