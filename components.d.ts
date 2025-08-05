@@ -33,6 +33,7 @@ declare module 'vue' {
     IconExport: typeof import('./src/components/icons/IconExport.vue')['default']
     IconGithub: typeof import('./src/components/icons/IconGithub.vue')['default']
     IconMason: typeof import('./src/components/icons/IconMason.vue')['default']
+    IconMobile: typeof import('./src/components/icons/IconMobile.vue')['default']
     IconNext: typeof import('./src/components/icons/IconNext.vue')['default']
     IconReturn: typeof import('./src/components/icons/IconReturn.vue')['default']
     IconRun: typeof import('./src/components/icons/IconRun.vue')['default']

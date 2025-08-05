@@ -15,11 +15,12 @@
           <el-button v-for="item in themeList" :key="item.className" :color="item.color"
             @click="changeTheme(item.className)" :title="item.label" style="margin: 0;margin: 5px;"></el-button>
           <template #reference>
-              <IconTheme class="cursor-pointer"  title="主题切换"/>
+            <IconTheme class="cursor-pointer" title="主题切换" />
           </template>
         </el-popover>
         <TextTip content="真机预览">
-          <IconRun class="cursor-pointer ml-2" @click="clickRun" />
+          <!-- <IconRun class="cursor-pointer ml-2" @click="clickRun" /> -->
+          <IconMobile class="cursor-pointer ml-2" @click="clickRun" />
         </TextTip>
         <TextTip content="github仓库">
           <IconGithub class="cursor-pointer ml-2" @click="clickGithub" />
@@ -29,15 +30,17 @@
   </el-row>
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import HeaderButtonArea from '@/components/header-button-area/index.vue'
-import IconRun from '@/components/icons/IconRun.vue'
+// import IconRun from '@/components/icons/IconRun.vue'
+import { useQRCode } from '@vueuse/integrations/useQRCode.mjs';
 import pkg from '../../../../package.json'
 import IconGithub from '@/components/icons/IconGithub.vue'
 import IconTheme from '@/components/icons/IconTheme.vue'
 import { reactive, ref } from 'vue'
 import IconMason from '@/components/icons/IconMason.vue'
 import { setTheme } from '@/utils/theme'
+import { useModal } from '@/hooks/useModal';
 
 defineOptions({
   name: 'PageHeader',
@@ -65,7 +68,20 @@ const changeTheme = (theme) => {
 changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
-
+  const qrcode = useQRCode(`${location.origin}/preview`);
+  console.log('qrcode===',qrcode)
+  useModal({
+    title: '预览二维码',
+    props: {
+      width: 300,
+    },
+    footer: null,
+    content: () => (
+      <div class= { 'flex justify-center'} >
+      <img width={ 220} height = { 220} src = { qrcode.value } />
+      </div>
+     ),
+  });
 }
 
 const clickGithub = () => {
