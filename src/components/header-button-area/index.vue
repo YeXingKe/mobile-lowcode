@@ -30,7 +30,7 @@
             </TextTip>
             <span class="w-1"></span>
             <TextTip content="导入JSON">
-                <el-button :color="primaryColor" title="导入">
+                <el-button :color="primaryColor" title="导入" @click="importJSON">
                     <template #icon>
                         <IconImport class="cursor-pointer" />
                     </template>
@@ -80,6 +80,8 @@ import { useLayoutTypeStore } from '@/stores/layoutType';
 import { LayoutTypeEnum } from '@/enums';
 import { useModal } from '@/hooks/useModal';
 import CodeEditor from '@/components/code-editor/index.vue'
+import { importTemplateJSON,generateCode } from '@/utils';
+import { ElMessage, ElMessageBox } from 'element-plus';
 
 defineOptions({
     name: 'HeaderButtonArea',
@@ -117,9 +119,45 @@ const changeCompLayoutType = (value) => {
     layoutTypeStore.changeLayoutType(value)
 }
 
+
+const importJSONValue = ref(JSON.stringify(importTemplateJSON,null,2))
+const importJSON = () => {
+    useModal({
+        title: '导入JSON',
+        props: {
+         width: 750,
+        },
+        footer: null,
+        content: () => (
+        <div class= { 'flex justify-center flex-col'} >
+            <el-alert title="请按照以下格式导入，其他请按照属性编辑" type="primary" class="mb-2"/>
+            <CodeEditor v-model={importJSONValue.value}/>
+        </div>
+        ),
+   });
+}
+
 const handleCommand = (command: string) => {
     let title = command === 'code'?'导出代码':'导出JSON';
-
+    let value = command === 'code'?JSON.stringify(generateCode(JSON.stringify(jsonData)),null,2):JSON.stringify(jsonData,null,2)
+    let mode  = command === 'code'?'vue':'json'
+    const content = JSON.stringify(jsonData) || localStorage.getItem(localKey)
+    if(!JSON.stringify(content).length){
+        return  ElMessage({
+            message: '页面内容为空，请编辑！',
+            type: 'error',
+            duration: 1000, // 显示时长（毫秒）
+            showClose: false // 显示关闭按钮
+        })   
+    }
+    if(command === 'code'){
+     return  ElMessage({
+            message: '敬请期待！',
+            type: 'warning',
+            duration: 1000, // 显示时长（毫秒）
+            showClose: false // 显示关闭按钮
+        })
+    }
     useModal({
         title: title,
         props: {
@@ -128,7 +166,7 @@ const handleCommand = (command: string) => {
         footer: null,
         content: () => (
         <div class= { 'flex justify-center'} >
-            <CodeEditor />
+            <CodeEditor v-model={value}/>
         </div>
         ),
    });

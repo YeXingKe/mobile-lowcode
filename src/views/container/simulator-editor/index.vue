@@ -45,6 +45,9 @@
                   />
                 </template>
               </CompRender>
+              <div class="op-container">
+                 右键操作
+              </div>
             </div>
           </template>
         </DraggableTransition>
@@ -308,6 +311,20 @@ const onContextmenuBlock = (
 
   i {
     cursor: pointer;
+  }
+  
+  .op-container{
+    height: 14px;
+    line-height: 10px;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    background-color: var(--primary-color);
   }
 }
 </style>

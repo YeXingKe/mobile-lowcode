@@ -34,4 +34,10 @@
     --el-dropdown-menuItem-hover-fill: var(--secondary-color);
     --el-dropdown-menuItem-hover-color: var(--primary-color);
   }
+  .el-alert--primary.is-light, .el-alert--primary.is-light .el-alert__description {
+    color: var(--primary-color);
+  }
+  .el-alert--primary.is-light {
+    background-color: var(--secondary-color);
+  }
 }

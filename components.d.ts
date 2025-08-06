@@ -12,6 +12,7 @@ declare module 'vue' {
     CodeEditor: typeof import('./src/components/code-editor/index.vue')['default']
     ContainerComp: typeof import('./src/components/left-comp/container-comp/index.vue')['default']
     DraggableTransition: typeof import('./src/components/common/draggable-transition/index.vue')['default']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
