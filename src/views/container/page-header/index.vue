@@ -69,7 +69,7 @@ changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
   const qrcode = useQRCode(`${location.origin}/preview`);
-  console.log('qrcode===',qrcode)
+  
   useModal({
     title: '预览二维码',
     props: {

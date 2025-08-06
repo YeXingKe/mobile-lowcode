@@ -18,7 +18,7 @@
                     <template #icon>
                         <IconReturn class="cursor-pointer" />
                     </template>
-                </el-button>                
+                </el-button>
             </TextTip>
             <span class="w-1"></span>
             <TextTip content="恢复">
@@ -26,22 +26,37 @@
                     <template #icon>
                         <IconNext class="cursor-pointer" />
                     </template>
-                </el-button>                
+                </el-button>
             </TextTip>
             <span class="w-1"></span>
-            <TextTip content="导出">
-                <el-button :color="primaryColor" title="导出">
+            <TextTip content="导入JSON">
+                <el-button :color="primaryColor" title="导入">
+                    <template #icon>
+                        <IconImport class="cursor-pointer" />
+                    </template>
+                </el-button>
+            </TextTip>
+            <span class="w-1"></span>
+            <el-dropdown trigger="hover" @command="handleCommand">
+                <el-button :color="primaryColor">
                     <template #icon>
                         <IconExport class="cursor-pointer" />
                     </template>
-                </el-button>                
-            </TextTip>
+                </el-button>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item command="code">导出代码</el-dropdown-item>
+                        <el-dropdown-item command="json">导出JSON</el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
             <span class="w-1"></span>
             <TextTip content="H5预览">
-                <el-button :color="primaryColor" :icon="View" style="color: #fff;" title="预览" @click="clickH5Preview"/>              
+                <el-button :color="primaryColor" :icon="View" style="color: #fff;" title="预览" @click="clickH5Preview" />
             </TextTip>
             <span class="w-1"></span>
-            <el-popconfirm width="220" confirm-button-text="确定" cancel-button-text="取消" title="清空的操作不可恢复，确认清空当前编辑页面?" @confirm="clearPageElement">
+            <el-popconfirm width="220" confirm-button-text="确定" cancel-button-text="取消" title="清空的操作不可恢复，确认清空当前编辑页面?"
+                @confirm="clearPageElement">
                 <template #reference>
                     <TextTip content="清空页面元素">
                         <el-button type="danger" :icon="Delete" title="清空页面元素" />
@@ -50,14 +65,12 @@
             </el-popconfirm>
         </div>
     </div>
-    <H5Preview v-model:visible="isShowH5Preview"/>
+    <H5Preview v-model:visible="isShowH5Preview" />
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import { Delete, View } from '@element-plus/icons-vue';
-import IconReturn from '../icons/IconReturn.vue';
-import IconNext from '../icons/IconNext.vue';
 import H5Preview from '@/components/preview/h5Preview.vue'
 import { getCssVariable, setTheme, watchThemeChange } from '@/utils/theme';
 import IconExport from '../icons/IconExport.vue';
@@ -65,13 +78,14 @@ import { useGlobalProperties } from '@/hooks/useGlobalProperties';
 import { localKey, useVisualData } from '@/hooks/useVisualData';
 import { useLayoutTypeStore } from '@/stores/layoutType';
 import { LayoutTypeEnum } from '@/enums';
+import { useModal } from '@/hooks/useModal';
 
 defineOptions({
     name: 'HeaderButtonArea',
 })
 
 const compLayoutType = ref(LayoutTypeEnum.Single)
-const { updatePageBlock,jsonData } = useVisualData()
+const { updatePageBlock, jsonData } = useVisualData()
 const primaryColor = ref(getCssVariable('--primary-color'))
 const { globalProperties } = useGlobalProperties()
 // const router = useRouter();
@@ -98,9 +112,25 @@ const clickH5Preview = () => {
 };
 
 const layoutTypeStore = useLayoutTypeStore()
-const changeCompLayoutType = (value)=>{
-    console.log('没有触发吗',value)
+const changeCompLayoutType = (value) => {
     layoutTypeStore.changeLayoutType(value)
+}
+
+const handleCommand = (command: string) => {
+    let title = command === 'code'?'导出代码':'导出JSON';
+
+    useModal({
+        title: title,
+        props: {
+         width: 750,
+        },
+        footer: null,
+        content: () => (
+        <div class= { 'flex justify-center'} >
+            
+        </div>
+        ),
+   });
 }
 
 // 初始化主题
@@ -118,6 +148,12 @@ const screenType = ref('mobile')
 
 <style lang="scss" scoped>
 :deep(.el-button) {
-    padding: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+:deep(.el-button:focus-visible) {
+    outline: none;
+    // outline-offset: 1px;
+    // transition: outline-offset 0s,outline 0s;
 }
 </style>

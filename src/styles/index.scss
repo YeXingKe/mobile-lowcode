@@ -28,4 +28,10 @@
     --el-radio-button-checked-border-color: var(--primary-color);
     --el-radio-button-disabled-checked-fill: var(--el-border-color-extra-light);
   }
+  .el-dropdown,
+  .el-dropdown__popper
+  {
+    --el-dropdown-menuItem-hover-fill: var(--secondary-color);
+    --el-dropdown-menuItem-hover-color: var(--primary-color);
+  }
 }

@@ -9,7 +9,6 @@ export const useLayoutTypeStore = defineStore('layoutTypeStore', () => {
   
 
   function changeLayoutType(value:LayoutType){
-    console.log('改了吗123',value)
     layoutType.value = value
   }
   return { layoutType, changeLayoutType }

@@ -49,8 +49,6 @@ const attrs = useAttrs() // 等同于$attr
 
 const layoutTypeStore = useLayoutTypeStore()
 
-console.log('改了吗456',layoutTypeStore.layoutType)
-
 const dragOptions = computed(() => ({
   animation: 200,
   disabled: false, // 定义是否此sortable对象是否可用
