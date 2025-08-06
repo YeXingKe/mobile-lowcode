@@ -62,7 +62,8 @@ import { $$dropdown, DropdownOption } from '@/utils/dropdown-service'
 import type { VisualEditorBlockData } from '@/utils/visual-editor'
 import { ref, watch, watchEffect } from 'vue'
 import { useModal } from '@/hooks/useModal'
-import MonacoEditor from '@/components/monaco-editor'
+// import MonacoEditor from '@/components/monaco-editor'
+import CodeEditor from '@/components/code-editor/index.vue'
 import CompRender from '@/views/comp-render'
 import SlotItem from './slot-item.vue'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
@@ -206,7 +207,7 @@ const onContextmenuBlock = (
           label="查看节点"
           icon="el-icon-view"
           {...{
-            onClick: () =>
+            onClick: () => 
               useModal({
                 title: '节点信息',
                 footer: null,
@@ -214,11 +215,7 @@ const onContextmenuBlock = (
                   width: 600,
                 },
                 content: () => (
-                  <MonacoEditor
-                    code={JSON.stringify(block)}
-                    layout={{ width: 530, height: 600 }}
-                    vid={block._vid}
-                  />
+                  <CodeEditor modelValue={JSON.stringify(block,null,2)}  vid={block._vid}/>
                 ),
               }),
           }}

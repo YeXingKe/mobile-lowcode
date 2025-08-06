@@ -11,7 +11,7 @@ import WindiCSS from 'vite-plugin-windicss'
 import { resolve } from 'path'
 import legacy from '@vitejs/plugin-legacy'
 
-const prefix = `monaco-editor/esm/vs`;
+// const prefix = `monaco-editor/esm/vs`;
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -71,20 +71,20 @@ export default defineConfig({
         preview: resolve(__dirname, 'preview/index.html'),
       },
       output: {
-        manualChunks: {
-          jsonWorker: [`${prefix}/language/json/json.worker`],
-          cssWorker: [`${prefix}/language/css/css.worker`],
-          htmlWorker: [`${prefix}/language/html/html.worker`],
-          tsWorker: [`${prefix}/language/typescript/ts.worker`],
-          editorWorker: [`${prefix}/editor/editor.worker`],
-        },
+        // manualChunks: {
+        //   jsonWorker: [`${prefix}/language/json/json.worker`],
+        //   cssWorker: [`${prefix}/language/css/css.worker`],
+        //   htmlWorker: [`${prefix}/language/html/html.worker`],
+        //   tsWorker: [`${prefix}/language/typescript/ts.worker`],
+        //   editorWorker: [`${prefix}/editor/editor.worker`],
+        // },
       },
     },
   },
   //  强制 Vite 在开发服务器启动时对指定的依赖包进行预编译、代码合并、依赖缓存(结果存储在 node_modules/.vite 目录，后续启动直接复用)
   optimizeDeps: {
     include: ['@vueuse/core', 'element-plus', 'vant', 'lodash-es', 'vuedraggable'],
-    exclude: ['monaco-editor']
+    // exclude: ['monaco-editor']
   },
   resolve: {
     alias: {

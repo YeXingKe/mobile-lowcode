@@ -79,6 +79,7 @@ import { localKey, useVisualData } from '@/hooks/useVisualData';
 import { useLayoutTypeStore } from '@/stores/layoutType';
 import { LayoutTypeEnum } from '@/enums';
 import { useModal } from '@/hooks/useModal';
+import CodeEditor from '@/components/code-editor/index.vue'
 
 defineOptions({
     name: 'HeaderButtonArea',
@@ -127,7 +128,7 @@ const handleCommand = (command: string) => {
         footer: null,
         content: () => (
         <div class= { 'flex justify-center'} >
-            
+            <CodeEditor />
         </div>
         ),
    });
