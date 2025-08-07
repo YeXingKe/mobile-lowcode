@@ -211,13 +211,16 @@ export type VisualEditorComponent = {
 // 组件模块
 export type ComponentModules = {
   baseWidgets: VisualEditorComponent[] // 基础组件
-  //   containerComponents: VisualEditorComponent[]; // 容器组件
+  containerWidgets: VisualEditorComponent[] // 容器组件
+  bussinessWidgets: VisualEditorComponent[] // 业务组件
 }
 
 // 创建编辑器配置
 export function createVisualEditorConfig() {
   const componentModules: ComponentModules = {
     baseWidgets: [],
+    containerWidgets:[],
+    bussinessWidgets:[]
   }
   const componentMap: Record<string, VisualEditorComponent> = {}
   return {

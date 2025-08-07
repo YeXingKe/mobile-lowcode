@@ -12,6 +12,7 @@
             <div
               class="list-group-item"
               :data-label="outElement.label"
+              :data-op="'右键操作'"
               :class="{
                 focus: outElement.focus,
                 focusWithChild: outElement.focusWithChild,
@@ -45,9 +46,7 @@
                   />
                 </template>
               </CompRender>
-              <div class="op-container">
-                 右键操作
-              </div>
+              <!-- <div class="op-container" v-if="outElement.focusWithChild">右键操作</div> -->
             </div>
           </template>
         </DraggableTransition>
@@ -66,7 +65,7 @@ import type { VisualEditorBlockData } from '@/utils/visual-editor'
 import { ref, watch, watchEffect } from 'vue'
 import { useModal } from '@/hooks/useModal'
 // import MonacoEditor from '@/components/monaco-editor'
-import CodeEditor from '@/components/code-editor/index.vue'
+import CodeEditor from '@/components/common/code-editor/index.vue'
 import CompRender from '@/views/comp-render'
 import SlotItem from './slot-item.vue'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
@@ -295,6 +294,22 @@ const onContextmenuBlock = (
 
   &.focus {
     @include showComponentBorder;
+
+    &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    line-height: 10px;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    z-index:1000;
+    background-color: var(--primary-color);
+    content: attr(data-op);
+  }
   }
 
   &.drag::after {

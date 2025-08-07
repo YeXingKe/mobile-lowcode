@@ -1,19 +1,18 @@
 import { defineComponent, ref, watchEffect } from 'vue'
-import { Edit } from '@element-plus/icons-vue'
 import { cloneDeep } from 'lodash-es'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
 import styles from '../index.module.scss'
 import { createNewBlock } from '@/utils/visual-editor'
 import { visualConfig } from '@/utils/visual.config'
 import { useLayoutTypeStore } from '@/stores/layoutType'
-// import { LayoutTypeEnum } from '@/enums'
-
-export default defineComponent({
-  name: 'BaseWidgets',
-  label: '基本组件',
-  icon: Edit,
-  setup() {
-    const baseWidgets = ref(visualConfig.componentModules.baseWidgets)
+import { Mug } from '@element-plus/icons-vue'
+  
+  export default defineComponent({
+    name: 'ContainerComponent',
+    label: '容器组件',
+    icon: Mug,
+    setup() {
+    const containerWidgets = ref(visualConfig.componentModules.containerWidgets)
     const cloneDog = (comp) => {
       console.log('当前拖拽的组件：', comp)
       const newComp = cloneDeep(comp)
@@ -30,7 +29,7 @@ export default defineComponent({
       <>
         <DraggableTransition
           class={styles.listGroup}
-          v-model={baseWidgets.value}
+          v-model={containerWidgets.value}
           group={{ name: 'components', pull: 'clone', put: false }}
           // clone={cloneDog as any}
           // onChange={log as any}
@@ -42,7 +41,7 @@ export default defineComponent({
         >
           {{
             item: ({ element }) => (
-              <div class={[styles.listGroupItem,styles[`listGroupItem${layoutTypeStore.layoutType}`]]} data-label={element.label}>
+              <div class={[styles.listGroupItem,styles[`listGroupItem${layoutTypeStore.layoutType}`]]} data-label={element.label} >
                 {element.preview()}
               </div>
             ),
@@ -51,4 +50,5 @@ export default defineComponent({
       </>
     )
   },
-})
+  })
+  

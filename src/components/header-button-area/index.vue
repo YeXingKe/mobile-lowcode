@@ -79,7 +79,7 @@ import { localKey, useVisualData } from '@/hooks/useVisualData';
 import { useLayoutTypeStore } from '@/stores/layoutType';
 import { LayoutTypeEnum } from '@/enums';
 import { useModal } from '@/hooks/useModal';
-import CodeEditor from '@/components/code-editor/index.vue'
+import CodeEditor from '@/components/common/code-editor/index.vue'
 import { importTemplateJSON,generateCode } from '@/utils';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
