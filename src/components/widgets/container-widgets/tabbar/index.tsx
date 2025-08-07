@@ -25,7 +25,7 @@ const defaultTabbarItems = [
 export default {
     key: 'tabbar',
     moduleName: 'containerWidgets',
-    label: '表单项类型 - 输入框',
+    label: '底部导航栏',
     preview: () => (
         <Tabbar>
             {defaultTabbarItems.map((item) => (
