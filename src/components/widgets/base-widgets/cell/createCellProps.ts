@@ -40,7 +40,7 @@ const cellInternalProps = {
                 value: 'right',
             },
         ],
-        defaultValue: 'horizontal',
+        defaultValue: 'right',
     }),
     titleStyle:createEditorInputProp({label: '左侧标题额外样式',defaultValue: ''}),
     titleClass:createEditorInputProp({label: '左侧标题额外类名',defaultValue: ''}),
