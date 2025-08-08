@@ -1,4 +1,4 @@
-import {  Divider, NoticeBar } from 'vant';
+import {  Divider } from 'vant';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
 import {  createEditorColorProp, createEditorInputProp,  createEditorSelectProp,  createEditorSwitchProp } from '@/utils/visual-editor-props';
 import type { VisualEditorComponent } from '@/utils';
