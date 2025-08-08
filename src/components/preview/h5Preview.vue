@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="dialogVisible" custom-class="h5-preview" :show-close="false" width="360px" style="height: 680px;">
+    <el-dialog v-model="dialogVisible" class="h5-preview" :show-close="false" width="360px" style="height: 680px;padding: 0 !important;">
         <iframe v-if="dialogVisible" :style="{ width: '100%', height: '100%' }" :src="previewUrl" frameborder="0"
             scrolling="auto"></iframe>
     </el-dialog>

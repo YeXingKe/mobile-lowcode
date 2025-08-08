@@ -3,9 +3,8 @@ import App from './App.vue';
 
 import router from './router';
 
-
-import 'animate.css';
 import { setupVant } from '@/plugins/vant';
+import 'animate.css';
 
 const app = createApp(App);
 
