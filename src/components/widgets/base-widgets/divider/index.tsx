@@ -8,7 +8,7 @@ import { computed } from 'vue';
 export default {
   key: 'divider',
   moduleName: 'baseWidgets',
-  label: '通知栏',
+  label: '分割线',
   preview: () => (
     <Divider style="width:190px">文本</Divider>
   ),

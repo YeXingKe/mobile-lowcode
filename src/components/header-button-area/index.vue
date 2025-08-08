@@ -58,9 +58,9 @@
             <el-popconfirm width="220" confirm-button-text="确定" cancel-button-text="取消" title="清空的操作不可恢复，确认清空当前编辑页面?"
                 @confirm="clearPageElement">
                 <template #reference>
-                    <TextTip content="清空页面元素">
+                    <!-- <TextTip content="清空页面元素"> -->
                         <el-button type="danger" :icon="Delete" title="清空页面元素" />
-                    </TextTip>
+                    <!-- </TextTip> -->
                 </template>
             </el-popconfirm>
         </div>
