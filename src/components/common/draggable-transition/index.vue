@@ -2,7 +2,7 @@
   <draggable
     v-model="list"
     class="dragArea"
-    :class="[isDrag, `listGroup${layoutTypeStore.layoutType}`]"
+    :class="[isDrag, listGroup?'listGroup':`listGroup${layoutTypeStore.layoutType}`]"
     :component-data="{
       tag: 'ul',
       type: 'transition-group',
@@ -38,9 +38,10 @@ const props = withDefaults(
     itemKey?: string
     modelValue?: Array<any>
     group?: object
-    fallbackClass?: string
+    fallbackClass?: string,
+    listGroup?:boolean  // 不影响编辑页的布局
   }>(),
-  { modelValue: () => [], itemKey: '_vid', group: () => ({ name: 'components' }) },
+  { modelValue: () => [], itemKey: '_vid',listGroup:false, group: () => ({ name: 'components' }) },
 )
 const emit = defineEmits(['update:modelValue', 'update:drag'])
 const list = useVModel(props, 'modelValue', emit)

@@ -7,6 +7,7 @@
           v-model="currentPage.blocks"
           class="!min-h-680px"
           draggable=".item-drag"
+          :listGroup="true"
         >
           <template #item="{ element: outElement }">
             <div
