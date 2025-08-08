@@ -1,6 +1,6 @@
 import {  NoticeBar } from 'vant';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
-import {  createEditorInputProp,  createEditorSwitchProp } from '@/utils/visual-editor-props';
+import {  createEditorColorProp, createEditorInputProp,  createEditorSwitchProp } from '@/utils/visual-editor-props';
 import type { VisualEditorComponent } from '@/utils';
 
 
@@ -32,7 +32,7 @@ export default {
     mode:createEditorInputProp({label: '通知栏模式',defaultValue: '',}),
     text:createEditorInputProp({label: '通知栏文本内容',defaultValue: '无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。',}),
     color:createEditorInputProp({label: '通知文本颜色',defaultValue: '#ed6a0c',}),
-    background:createEditorInputProp({label: '滚动条背景',defaultValue: '#fffbe8',}),
+    background:createEditorColorProp({label: '滚动条背景',defaultValue: '#fffbe8',}),
     leftIcon:createEditorInputProp({label: '左侧图标',defaultValue: 'volume-o',}),
     delay:createEditorInputProp({label: '动画延迟时间 (s)',defaultValue: 1,}),
     speed:createEditorInputProp({label: '滚动速率 (px/s) ',defaultValue: 60,}),

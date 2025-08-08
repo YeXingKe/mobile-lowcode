@@ -1,5 +1,5 @@
 import { useGlobalProperties } from "@/hooks/useGlobalProperties";
-import { createEditorInputProp, createEditorModelBindProp } from "@/utils/visual-editor-props";
+import { createEditorColorProp, createEditorInputProp, createEditorModelBindProp } from "@/utils/visual-editor-props";
 import { Field, Switch } from "vant";
 import { createFieldProps } from "../createFieldProps";
 
@@ -44,8 +44,8 @@ export default {
         size: createEditorInputProp({ label: '按钮尺寸', defaultValue: '26px' }),// number string
         activeValue:createEditorInputProp({ label: '打开时对应的值', defaultValue: 'true' }),
         inactiveValue:createEditorInputProp({ label: '关闭时对应的值', defaultValue: 'false' }),        
-        activeColor:createEditorInputProp({ label: '打开时的背景色', defaultValue: '#1989fa' }),
-        inactiveColor:createEditorInputProp({ label: '关闭时的背景色', defaultValue: 'rgba(120, 120, 128, 0.16)' }),
+        activeColor:createEditorColorProp({ label: '打开时的背景色', defaultValue: '#1989fa' }),
+        inactiveColor:createEditorColorProp({ label: '关闭时的背景色', defaultValue: 'rgba(120, 120, 128, 0.16)' }),
         ...createFieldProps()
     },
     events: [
