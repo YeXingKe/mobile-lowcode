@@ -1,18 +1,17 @@
-import { Field, Picker, Popup } from 'vant';
+import { DatePicker, Field, Popup } from 'vant';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
-import { createEditorColorProp, createEditorCrossSortableProp, createEditorInputProp, createEditorModelBindProp, createEditorSelectProp, createEditorSwitchProp } from '@/utils/visual-editor-props';
 import type { VisualEditorComponent } from '@/utils';
-import { computed, reactive, useAttrs } from 'vue';
-import { createFieldProps } from '../createFieldProps';
+import { reactive, useAttrs } from 'vue';
+import { createDatePickerProps } from './createDatePickerProps';
 
 
 export default {
-    key: 'picker',
+    key: 'date-picker',
     moduleName: 'baseWidgets',
-    label: '选择器',
+    label: '表单项-日期',
     preview: () => (
         <Field
-            label="选择器"
+            label="日期"
             placeholder="点击选择"
         />
     ),
@@ -30,25 +29,33 @@ export default {
             text: 'label',
             value: 'value',
         };
-
+        console.log({...props},'props====');
         const onConfirm = (value) => {
             props.modelValue = value.value;
-            state.text = value[props.valueKey || 'text'];
+            state.text = value;
             state.showPicker = false;
             console.log(props);
+        };
+
+        const columnsType = ['year', 'month'];
+        const filter = (type, options) => {
+          if (type === 'month') {
+            return options.filter((option) => Number(option.value) % 6 === 0);
+          }
+          return options;
         };
 
 
         return () => {
             if (props.modelValue) {
-                state.defaultIndex = props.columns?.findIndex((item) => item.value == props.modelValue);
-                state.text = props.columns[state.defaultIndex]?.label;
+                // state.defaultIndex = props.columns?.findIndex((item) => item.value == props.modelValue);
+                // state.text = props.columns[state.defaultIndex]?.label;
             }
 
             return (
                 <div style={styles}>
                     <Field
-                        v-model={props.modelValue}
+                       v-model={props.modelValue}
                         {...props}
                         readonly
                         clickable
@@ -66,12 +73,12 @@ export default {
                     </Field>
                     {/* 相当于v-model:show="state.showPicker" */}
                     <Popup v-model={[state.showPicker, 'show']} position={'bottom'}>
-                        <Picker
+                        <DatePicker
                             ref={(el) => registerRef(el, block._vid)}
+                            // title="选择年月"
+                            filter={filter}
                             {...props}
                             {...attrs}
-                            defaultIndex={state.defaultIndex}
-                            columnsFieldNames={customFieldName}
                             onConfirm={onConfirm}
                             onCancel={() => (state.showPicker = false)}
                         />
@@ -81,20 +88,7 @@ export default {
         };
     },
     props: {
-        modelValue: createEditorInputProp({ label: '默认值' }),
-        name: createEditorModelBindProp({ label: '字段绑定', defaultValue: '' }),
-        label: createEditorInputProp({ label: '输入框左侧文本', defaultValue: '选择器' }),
-        columns: createEditorCrossSortableProp({
-            label: '默认选项',
-            labelPosition: 'top',
-            multiple: false,
-            defaultValue: [
-                { label: '杭州', value: 'hangzhou' },
-                { label: '上海', value: 'shanghai' },
-            ],
-        }),
-        placeholder: createEditorInputProp({ label: '占位符', defaultValue: '请选择' }),
-        ...createFieldProps(),
+        ...createDatePickerProps()
     },
     events: [
         { label: '点击完成按钮时触发', value: 'confirm' },

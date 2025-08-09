@@ -84,7 +84,6 @@ export default defineConfig({
   //  强制 Vite 在开发服务器启动时对指定的依赖包进行预编译、代码合并、依赖缓存(结果存储在 node_modules/.vite 目录，后续启动直接复用)
   optimizeDeps: {
     include: ['@vueuse/core', 'element-plus', 'vant', 'lodash-es', 'vuedraggable'],
-    // exclude: ['monaco-editor']
   },
   resolve: {
     alias: {

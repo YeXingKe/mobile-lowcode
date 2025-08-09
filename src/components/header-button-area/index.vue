@@ -88,7 +88,7 @@ defineOptions({
 })
 
 const compLayoutType = ref(LayoutTypeEnum.Single)
-const { updatePageBlock, jsonData } = useVisualData()
+const { updatePageBlock, jsonData} = useVisualData()
 const primaryColor = ref(getCssVariable('--primary-color'))
 const { globalProperties } = useGlobalProperties()
 // const router = useRouter();
@@ -141,6 +141,7 @@ const handleCommand = (command: string) => {
     let title = command === 'code'?'导出代码':'导出JSON';
     let value = command === 'code'?JSON.stringify(generateCode(JSON.stringify(jsonData)),null,2):JSON.stringify(jsonData,null,2)
     let mode  = command === 'code'?'vue':'json'
+
     const content = JSON.stringify(jsonData) || localStorage.getItem(localKey)
     if(!JSON.stringify(content).length){
         return  ElMessage({

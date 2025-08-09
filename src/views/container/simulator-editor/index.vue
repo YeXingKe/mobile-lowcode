@@ -250,6 +250,7 @@ const onContextmenuBlock = (
   @media (max-width: 1114px) {
     padding-right: 0;
   }
+
 }
 
 .simulator-editor {

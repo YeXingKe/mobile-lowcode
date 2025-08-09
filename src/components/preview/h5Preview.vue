@@ -46,5 +46,9 @@ const previewUrl = `${BASE_URL}preview/${location.hash}`;
             width: 0;
         }
     }
+
+    .van-field__control,.placeholder {
+    color: #969799; // #969799;
+  }
 }
 </style>

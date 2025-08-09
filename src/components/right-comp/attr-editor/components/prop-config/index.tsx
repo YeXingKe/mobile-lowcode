@@ -11,6 +11,7 @@ import {
   ElTooltip,
   ElIcon,
   type ExpandTrigger,
+  ElDatePicker,
 } from 'element-plus'
 import { cloneDeep } from 'lodash-es'
 import { Warning } from '@element-plus/icons-vue'
@@ -56,8 +57,9 @@ export const PropConfig = defineComponent({
         [VisualEditorPropsType.inputNumber]: () => {
           const parseRes = parseFloat(propObj[prop])
           propObj[prop] = Number.isNaN(parseRes) ? 0 : parseRes
-          return <ElInputNumber v-model={propObj[prop]} />
+          return <ElInputNumber v-model={propObj[prop]} /> 
         },
+        [VisualEditorPropsType.date]: () => <ElDatePicker v-model={propObj[prop]} type="date"/>,
         [VisualEditorPropsType.switch]: () => <ElSwitch v-model={propObj[prop]} />,
         [VisualEditorPropsType.color]: () => <ElColorPicker v-model={propObj[prop]} />,
         [VisualEditorPropsType.crossSortable]: () => (

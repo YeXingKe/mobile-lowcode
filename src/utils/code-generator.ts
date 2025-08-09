@@ -1,7 +1,6 @@
 import { VantEnum } from "@/enums/vant"
 import type { VisualEditorBlockData } from "./visual-editor"
-import { parse } from "@vue/compiler-sfc"
-
+// import { parse } from "@vue/compiler-sfc"
 export const generateCode = function(content, codeType= 'vue') {
   let jsonContent:VisualEditorBlockData = JSON.parse(content)
   
@@ -56,14 +55,14 @@ export const generateCode = function(content, codeType= 'vue') {
   return defaultTemplate(startStr,scriptStr)
 }
 
-export const formatVueCode = (code) => {
-  const { descriptor } = parse(code);
-  return `
-      <template>
-        ${descriptor.template?.content || ''}
-      </template>
-      <script>
-        ${descriptor.script?.content || ''}
-      </script>
-  `; // ✅ 确保反引号闭合
-};
+// export const formatVueCode = (code) => {
+//   const { descriptor } = parse(code);
+//   return `
+//       <template>
+//         ${descriptor.template?.content || ''}
+//       </template>
+//       <script>
+//         ${descriptor.script?.content || ''}
+//       </script>
+//   `; // ✅ 确保反引号闭合
+// };
