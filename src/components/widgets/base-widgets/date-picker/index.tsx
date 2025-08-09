@@ -1,8 +1,9 @@
 import { DatePicker, Field, Popup } from 'vant';
 import { useGlobalProperties } from '@/hooks/useGlobalProperties';
 import type { VisualEditorComponent } from '@/utils';
-import { reactive, useAttrs } from 'vue';
+import { reactive, useAttrs, watchEffect } from 'vue';
 import { createDatePickerProps } from './createDatePickerProps';
+import { dayjs } from 'element-plus';
 
 
 export default {
@@ -23,39 +24,24 @@ export default {
         const state = reactive({
             showPicker: false,
             text: '',
-            defaultIndex: 0,
+            currentDate: ['2025','08','09'],
         });
-        const customFieldName = {
-            text: 'label',
-            value: 'value',
-        };
-        console.log({...props},'props====');
-        const onConfirm = (value) => {
-            props.modelValue = value.value;
-            state.text = value;
-            state.showPicker = false;
-            console.log(props);
-        };
 
-        const columnsType = ['year', 'month'];
-        const filter = (type, options) => {
-          if (type === 'month') {
-            return options.filter((option) => Number(option.value) % 6 === 0);
-          }
-          return options;
+        const onConfirm = (value) => {
+            // props.modelValue = value.value;
+            state.text = dayjs(new Date(value)).format('YYYY-MM-DD');
+            state.showPicker = false;
         };
 
 
         return () => {
             if (props.modelValue) {
-                // state.defaultIndex = props.columns?.findIndex((item) => item.value == props.modelValue);
-                // state.text = props.columns[state.defaultIndex]?.label;
+                state.text = dayjs(new Date(props.modelValue)).format('YYYY-MM-DD');
             }
 
             return (
                 <div style={styles}>
                     <Field
-                       v-model={props.modelValue}
                         {...props}
                         readonly
                         clickable
@@ -75,8 +61,8 @@ export default {
                     <Popup v-model={[state.showPicker, 'show']} position={'bottom'}>
                         <DatePicker
                             ref={(el) => registerRef(el, block._vid)}
-                            // title="选择年月"
-                            filter={filter}
+                            v-model:modelValue={state.currentDate}
+                            // filter={filter}
                             {...props}
                             {...attrs}
                             onConfirm={onConfirm}

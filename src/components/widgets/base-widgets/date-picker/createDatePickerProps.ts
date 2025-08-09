@@ -4,7 +4,7 @@ import { createFieldProps } from "../createFieldProps"
 const datePickerInternalProps = {
     // filter	选项过滤函数	(type: string, options: PickerOption[], values: string[]) => PickerOption[]	-
     // formatter	选项格式化函数	(type: string, option: PickerOption) => PickerOption	-
-    modelValue:createEditorDatePickerProp({label: '当前选中的日期',defaultValue: new Date()}),
+    // modelValue:createEditorInputProp({label: '当前选中的日期',defaultValue: '2025-08-09'}),
     columnsType:createEditorSelectProp({
         label: '选项类型',
         options: [
@@ -35,8 +35,8 @@ const datePickerInternalProps = {
         ],
         defaultValue: ['year', 'month', 'day'],
     }),
-    minDate:createEditorDatePickerProp({label: '可选的最小时间，精确到日',defaultValue: new Date(2020, 0, 1)}),
-    maxDate:createEditorDatePickerProp({label: '可选的最大时间，精确到日',defaultValue: new Date()}),
+    // minDate:createEditorDatePickerProp({label: '可选的最小时间，精确到日',defaultValue: null}),
+    // maxDate:createEditorDatePickerProp({label: '可选的最大时间，精确到日',defaultValue: null}),
     title:createEditorInputProp({label: '顶部栏标题',defaultValue: '选择日期'}),
     confirmButtonText:createEditorInputProp({label: '确认按钮文字',defaultValue: '确认'}),
     cancelButtonText:createEditorInputProp({label: '取消按钮文字',defaultValue: '取消'}),

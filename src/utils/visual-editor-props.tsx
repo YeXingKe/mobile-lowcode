@@ -86,7 +86,7 @@ export function createEditorSwitchProp({
 /*---------------------------------------datePicker-------------------------------------------*/
 interface EditorDatePickerProp {
   label: string
-  defaultValue?: Date
+  defaultValue?: any
   tips?: string
 }
 
