@@ -2,7 +2,7 @@ export const importTemplateJSON = {
     _vid: 'vid_f99b92bd20',
     moduleName: 'baseWidgets',
     componentKey: 'radio',
-    label: '表单项类型 - 单选框',
+    label: '表单项 - 单选框',
     adjustPosition: true,
     focus: true,
     styles: {

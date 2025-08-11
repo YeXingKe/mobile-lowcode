@@ -9,7 +9,7 @@ import { createFieldProps } from '../createFieldProps';
 export default {
     key: 'picker',
     moduleName: 'baseWidgets',
-    label: '选择器',
+    label: '表单项-选择器',
     preview: () => (
         <Field
             label="选择器"

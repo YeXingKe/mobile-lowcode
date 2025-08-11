@@ -6,7 +6,7 @@ import { createFieldProps } from "../createFieldProps";
 export default {
     key: 'radio',
     moduleName: 'baseWidgets',
-    label: '表单项类型 - 单选框',
+    label: '表单项 - 单选框',
     preview: () => (
         <RadioGroup direction="horizontal">
             <Radio name='A'>A</Radio>

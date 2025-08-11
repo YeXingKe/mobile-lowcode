@@ -6,7 +6,7 @@ import type { VisualEditorComponent } from '@/utils/visual-editor'
 export default {
   key: 'input',
   moduleName: 'baseWidgets',
-  label: '表单项类型 - 输入框',
+  label: '表单项 - 输入框',
   preview: () => (
     <Field name="用户名" label="用户名" labelWidth={50} colon placeholder="请输入用户名" />
   ),

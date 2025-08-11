@@ -6,7 +6,7 @@ import { stepperFieldProps } from "./stepperFieldProps";
 export default {
     key: 'stepper',
     moduleName: 'baseWidgets',
-    label: '表单项类型 - 布进器',
+    label: '表单项 - 布进器',
     preview: () => (
         <Stepper modelValue="2" step="1"></Stepper>
     ),
@@ -25,7 +25,7 @@ export default {
                     name={Array.isArray(props.name) ? [...props.name].pop() : props.name}
                     v-slots={{
                         input: () => (
-                            <Stepper                                 
+                            <Stepper
                             ref={(el) => registerRef(el, block._vid)}
                             {...props}
                             v-model={props.modelValue}/>

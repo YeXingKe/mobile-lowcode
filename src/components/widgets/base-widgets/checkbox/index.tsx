@@ -10,7 +10,7 @@ import type { VisualEditorComponent } from '@/utils';
 export default {
   key: 'checkbox',
   moduleName: 'baseWidgets',
-  label: '表单项类型 - 复选框',
+  label: '表单项 - 复选框',
   preview: () => (
     <CheckboxGroup modelValue={['1']} direction={'horizontal'}>
       <Checkbox name="1" shape="square">

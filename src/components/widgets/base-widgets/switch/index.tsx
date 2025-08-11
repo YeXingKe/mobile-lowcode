@@ -6,7 +6,7 @@ import { createFieldProps } from "../createFieldProps";
 export default {
     key: 'switch',
     moduleName: 'baseWidgets',
-    label: '表单项类型 - 单选框',
+    label: '表单项 - 单选框',
     preview: () => (
       <Switch modelValue={true}></Switch>
     ),
@@ -25,7 +25,7 @@ export default {
                     name={Array.isArray(props.name) ? [...props.name].pop() : props.name}
                     v-slots={{
                         input: () => (
-                        <Switch                                 
+                        <Switch
                             ref={(el) => registerRef(el, block._vid)}
                             {...props}
                             v-model={props.modelValue}
@@ -43,7 +43,7 @@ export default {
         loading: createEditorInputProp({ label: '是否加载状态', defaultValue: 'false' }),
         size: createEditorInputProp({ label: '按钮尺寸', defaultValue: '26px' }),// number string
         activeValue:createEditorInputProp({ label: '打开时对应的值', defaultValue: 'true' }),
-        inactiveValue:createEditorInputProp({ label: '关闭时对应的值', defaultValue: 'false' }),        
+        inactiveValue:createEditorInputProp({ label: '关闭时对应的值', defaultValue: 'false' }),
         activeColor:createEditorColorProp({ label: '打开时的背景色', defaultValue: '#1989fa' }),
         inactiveColor:createEditorColorProp({ label: '关闭时的背景色', defaultValue: 'rgba(120, 120, 128, 0.16)' }),
         ...createFieldProps()
