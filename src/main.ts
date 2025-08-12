@@ -6,6 +6,8 @@ import router from './router'
 // import { setupElementPlus } from './plugins/element-plus'
 // import { setupVant } from './plugins/vant'
 
+import 'element-plus/theme-chalk/index.css'
+import 'vant/lib/index.css';
 import '@/styles/index.scss'
 import 'normalize.css'
 import 'virtual:windi.css'
