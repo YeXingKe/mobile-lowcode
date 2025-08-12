@@ -3,8 +3,8 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import { setupElementPlus } from './plugins/element-plus'
-import { setupVant } from './plugins/vant'
+// import { setupElementPlus } from './plugins/element-plus'
+// import { setupVant } from './plugins/vant'
 
 import '@/styles/index.scss'
 import 'normalize.css'
@@ -16,10 +16,10 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-// 使用element-plus插件
-setupElementPlus(app);
-// 使用vant插件
-setupVant(app);
+// // 使用element-plus插件
+// setupElementPlus(app);
+// // 使用vant插件
+// setupVant(app);
 
 app.config.globalProperties.$$refs = {}
 

@@ -10,7 +10,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     BusinessComp: typeof import('./src/components/left-comp/business-comp/index.vue')['default']
     CodeEditor: typeof import('./src/components/common/code-editor/index.vue')['default']
-    ContainerComp: typeof import('./src/components/left-comp/container-comp/index.vue')['default']
     DraggableTransition: typeof import('./src/components/common/draggable-transition/index.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']

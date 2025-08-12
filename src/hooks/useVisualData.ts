@@ -1,4 +1,4 @@
-import { reactive, inject, readonly, computed, watch } from 'vue'
+import { reactive, inject, readonly, computed, watch, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { InjectionKey } from 'vue'
 
@@ -94,7 +94,7 @@ export const initVisualData = () => {
 
   // 更新page
   const updatePage = ({ newPath = '', oldPath, page }) => {
-    console.log(state.jsonData.pages[oldPath], page)
+    console.log(state.jsonData.pages[oldPath], page,'------------------updatePage')
     if (newPath && newPath != oldPath) {
       page.path = newPath
       // 如果传了新的路径，则认为是修改页面路由
@@ -217,11 +217,14 @@ export const initVisualData = () => {
     state.jsonData = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData
   }
 
+  const rawPage = ref<VisualEditorPage>(state.currentPage)
+
   return {
     visualConfig,
     jsonData: readonly(state.jsonData), // 保护JSONData避免直接修改
-    currentPage: computed(() => state.currentPage),
+    currentPage: computed(()=>state.currentPage),
     currentBlock: computed(() => state.currentBlock),
+    rawPage,
     overrideProject,
     // incrementFetchApi,
     // deleteFetchApi,

@@ -43,7 +43,7 @@ export const AttrEditor = defineComponent({
       if (currentBlock.value) {
         const { componentKey } = currentBlock.value
         const component = visualConfig.componentMap[componentKey]
-        console.log('props.block:', currentBlock.value)
+
         content.push(
           <>
             <ElFormItem label="组件ID" labelWidth={'76px'}>

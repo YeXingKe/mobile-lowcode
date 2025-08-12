@@ -14,15 +14,15 @@
         </div>
         <div class="flex items-end h-1/1 ">
             <TextTip content="撤销">
-                <el-button :color="primaryColor" title="撤销">
+                <el-button :color="primaryColor" title="撤销" :disabled="!historyData.canUndo" @click="historyData.undo">
                     <template #icon>
                         <IconReturn class="cursor-pointer" />
                     </template>
                 </el-button>
             </TextTip>
             <span class="w-1"></span>
-            <TextTip content="恢复">
-                <el-button :color="primaryColor" title="恢复">
+            <TextTip content="重做">
+                <el-button :color="primaryColor" title="重做" :disabled="!historyData.canRedo"  @click="historyData.redo">
                     <template #icon>
                         <IconNext class="cursor-pointer" />
                     </template>
@@ -69,7 +69,7 @@
 </template>
 
 <script lang="tsx" setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { Delete, View } from '@element-plus/icons-vue';
 import H5Preview from '@/components/preview/h5Preview.vue'
 import { getCssVariable, setTheme, watchThemeChange } from '@/utils/theme';
@@ -82,6 +82,7 @@ import { useModal } from '@/hooks/useModal';
 import CodeEditor from '@/components/common/code-editor/index.vue'
 import { importTemplateJSON,generateCode } from '@/utils';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import { useHistoryDataStore } from '@/stores/historyData';
 
 defineOptions({
     name: 'HeaderButtonArea',
@@ -89,23 +90,25 @@ defineOptions({
 
 const compLayoutType = ref(LayoutTypeEnum.Single)
 const { updatePageBlock, jsonData} = useVisualData()
+const historyData = useHistoryDataStore()
 const primaryColor = ref(getCssVariable('--primary-color'))
 const { globalProperties } = useGlobalProperties()
 // const router = useRouter();
 
 const clearPageElement = () => {
     // 方法一：路由重刷
-    // 给组件重新赋值key  
+    // 给组件重新赋值key
     try {
-        console.log(globalProperties.$$refs, 'globalProperties.$$refs')
         globalProperties.$$refs = {}
         sessionStorage.setItem(localKey, '')
         updatePageBlock('/', [])
+        historyData.clear()
         // router.replace('/') // 替换当前路由，没历史行迹
     } catch (err) {
         console.error('清空失败:', err);
     }
 }
+
 
 const isShowH5Preview = ref(false);
 const clickH5Preview = () => {
@@ -149,7 +152,7 @@ const handleCommand = (command: string) => {
             type: 'error',
             duration: 1000, // 显示时长（毫秒）
             showClose: false // 显示关闭按钮
-        })   
+        })
     }
     if(command === 'code'){
      return  ElMessage({

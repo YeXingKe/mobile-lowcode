@@ -63,13 +63,14 @@ import { generateNanoid } from '@/utils'
 import { cloneDeep } from 'lodash-es'
 import { $$dropdown, DropdownOption } from '@/utils/dropdown-service'
 import type { VisualEditorBlockData } from '@/utils/visual-editor'
-import { ref, watch, watchEffect } from 'vue'
+import { nextTick, ref, watch, watchEffect } from 'vue'
 import { useModal } from '@/hooks/useModal'
 // import MonacoEditor from '@/components/monaco-editor'
 import CodeEditor from '@/components/common/code-editor/index.vue'
 import CompRender from '@/views/comp-render'
 import SlotItem from './slot-item.vue'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
+// import { useHistoryDataStore } from '@/stores/historyData'
 
 defineOptions({
   name: 'SimulatorEditor',
@@ -77,25 +78,32 @@ defineOptions({
 const { currentPage, setCurrentBlock } = useVisualData()
 const { globalProperties } = useGlobalProperties()
 const drag = ref(false)
+/** 撤销撤回操作目前有currentPage.value.blocks重复数据，暂无法解决 */
+// const historyData = useHistoryDataStore()
 
+// watch(()=>historyData.current,(val:VisualEditorBlockData[])=>{
+//   // 如val.length = 1
+//   currentPage.value.blocks = val
+//   // 设置后currentPage.value.blocks.length = 2
+// },{immediate:true})
 /**
  * @description 操作当前页面样式表
  */
 watchEffect(() => {
   // 自动追踪依赖并执行副作用函数
-  const { bgImage, bgColor } = currentPage.value.config
-  const bodyStyleStr = `
-      .simulator-editor-content {
-        background-color: ${bgColor};
-        background-image: url(${bgImage});
-      }`
-  const styleSheets = document.styleSheets[0]
-  const firstCssRule = document.styleSheets[0].cssRules[0]
-  const isExistContent = firstCssRule.cssText.includes('.simulator-editor-content')
-  if (isExistContent) {
-    styleSheets.deleteRule(0)
-  }
-  styleSheets.insertRule(bodyStyleStr)
+    const { bgImage, bgColor } = currentPage.value.config
+    const bodyStyleStr = `
+        .simulator-editor-content {
+          background-color: ${bgColor};
+          background-image: url(${bgImage});
+        }`
+    const styleSheets = document.styleSheets[0]
+    const firstCssRule = document.styleSheets[0].cssRules[0]
+    const isExistContent = firstCssRule.cssText.includes('.simulator-editor-content')
+    if (isExistContent) {
+      styleSheets.deleteRule(0)
+    }
+    styleSheets.insertRule(bodyStyleStr)
 })
 //递归实现
 //@leafId  为你要查找的id，
@@ -210,7 +218,7 @@ const onContextmenuBlock = (
           label="查看节点"
           icon="el-icon-view"
           {...{
-            onClick: () => 
+            onClick: () =>
               useModal({
                 title: '节点信息',
                 footer: null,
@@ -279,7 +287,7 @@ const onContextmenuBlock = (
     }
    /* 滚动条滑块 */
     &::-webkit-scrollbar-thumb {
-      background-color: #d1d0d0; 
+      background-color: #d1d0d0;
       border-radius: 4px;
     }
   }
@@ -329,7 +337,7 @@ const onContextmenuBlock = (
   i {
     cursor: pointer;
   }
-  
+
   .op-container{
     height: 14px;
     line-height: 10px;

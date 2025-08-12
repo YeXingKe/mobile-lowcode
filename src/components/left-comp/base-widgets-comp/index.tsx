@@ -1,12 +1,10 @@
 import { defineComponent, ref, watchEffect } from 'vue'
 import { Edit } from '@element-plus/icons-vue'
-import { cloneDeep } from 'lodash-es'
 import DraggableTransition from '@/components/common/draggable-transition/index.vue'
 import styles from '../index.module.scss'
-import { createNewBlock } from '@/utils/visual-editor'
 import { visualConfig } from '@/utils/visual.config'
 import { useLayoutTypeStore } from '@/stores/layoutType'
-// import { LayoutTypeEnum } from '@/enums'
+import { useCloneDog } from '@/hooks/useCloneDog'
 
 export default defineComponent({
   name: 'BaseWidgets',
@@ -14,11 +12,8 @@ export default defineComponent({
   icon: Edit,
   setup() {
     const baseWidgets = ref(visualConfig.componentModules.baseWidgets)
-    const cloneDog = (comp) => {
-      console.log('当前拖拽的组件：', comp)
-      const newComp = cloneDeep(comp)
-      return createNewBlock(newComp)
-    }
+
+    const { cloneDog } = useCloneDog()
 
     const layoutTypeStore = useLayoutTypeStore() // 直接解构会丢失响应性
 
