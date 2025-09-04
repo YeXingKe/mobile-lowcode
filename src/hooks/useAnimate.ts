@@ -21,26 +21,26 @@ export const useAnimate = async (
 
         // 设置动画属性
         const setAnimate = () => {
-          animateEl.style.setProperty('--animate-duration', `${animate.duration}s`);
-          animateEl.style.setProperty('animation-delay', `${animate.delay}s`);
+          animateEl.style.setProperty('--animate-duration', `${animate.duration}s`); //    设置动画持续时间
+          animateEl.style.setProperty('animation-delay', `${animate.delay}s`); // 设置动画持续时间
           animateEl.style.setProperty(
             'animation-iteration-count',
             `${animate.infinite ? 'infinite' : animate.count}`,
-          );
-          animateEl?.classList.add(`${prefixCls}animated`, animationName);
+          ); // 设置动画重复次数（无限或指定次数）
+          animateEl?.classList.add(`${prefixCls}animated`, animationName); // 添加动画类名
         };
 
         // 动画结束时，删除类名
         const handleAnimationEnd = (event?: AnimationEvent) => {
-          event?.stopPropagation();
-          animateEl.classList.remove(`${prefixCls}animated`, animationName);
-          animateEl.removeEventListener('animationend', handleAnimationEnd);
+          event?.stopPropagation(); // 停止事件传播
+          animateEl.classList.remove(`${prefixCls}animated`, animationName); // 移除动画类名
+          animateEl.removeEventListener('animationend', handleAnimationEnd); // 移除事件监听器
           resolve('animation end');
         };
 
-        setAnimate();
+        setAnimate(); // 应用动画设置
 
-        animateEl?.addEventListener('animationend', handleAnimationEnd, { once: true });
+        animateEl?.addEventListener('animationend', handleAnimationEnd, { once: true }); // 添加一次性动画结束事件监听
         // animateEl?.addEventListener('animationcancel', handleAnimationEnd, { once: true })
       } else {
         resolve('动画执行失败！执行动画元素不存在！');

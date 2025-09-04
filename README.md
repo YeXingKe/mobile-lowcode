@@ -42,7 +42,8 @@ pnpm dev
 2. 安装依赖：
    ```bash
    cd mobile-lowcode
-   pnpm i 
+   corepack enable      # 只需一次，激活 corepack（Node 16+ 自带），初始化packageManager
+   corepack pnpm i 
    ```
 
 

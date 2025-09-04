@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { ElTabPane, ElTabs } from 'element-plus'
 import { ArrowRightBold, ArrowLeftBold } from '@element-plus/icons-vue'
 import { AttrEditor } from '@/components/right-comp/attr-editor'
+import { AnimateEditor } from '@/components/right-comp/animate-editor'
 
 export default defineComponent({
   name: 'RightAside',
@@ -29,7 +30,9 @@ export default defineComponent({
               <ElTabPane label="属性" name="attr">
                 <AttrEditor />
               </ElTabPane>
-              <ElTabPane label="动画" name="animate"></ElTabPane>
+              <ElTabPane label="动画" name="animate">
+                <AnimateEditor />
+              </ElTabPane>
               <ElTabPane label="事件" name="events"></ElTabPane>
               <ElTabPane label="页面设置" name="page-setting"></ElTabPane>
             </ElTabs>
