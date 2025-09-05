@@ -11,8 +11,8 @@
 }
 
 /**
-      * 显示组件边界
-      */
+  * 显示组件边界
+  */
 @mixin showComponentBorder {
   @include showSoliOutline;
 
@@ -22,22 +22,22 @@
 }
 
 /**
-      * 显示组件标签名称
-      */
+  * 显示组件标签名称
+  */
 @mixin showCompLabel($direction: left) {
-  @if ($direction == 'left') {
+  @if ($direction == "left") {
     top: 0;
     left: -3px;
     // transform: translate(-100%, 0);
   }
 
-  @if ($direction == 'right') {
+  @if ($direction == "right") {
     top: 0;
     right: -3px;
     // transform: translate(100%, 0);
   }
 
-  @if ($direction == 'top') {
+  @if ($direction == "top") {
     top: 2px;
     left: 0;
     // transform: translate(0, -100%);
@@ -48,25 +48,23 @@
   font-size: 12px;
   font-weight: 700;
   color: white;
-  z-index:1000;
+  z-index: 1000;
   background-color: var(--primary-color);
   border-radius: 3px;
   content: attr(data-label);
 }
 
 /**
-      * 显示实心外边框线
-      */
-
+  * 显示实心外边框线
+  */
 @mixin showSoliOutline($width: 2px) {
   outline: $width solid var(--primary-color);
   outline-offset: -2px;
 }
 
-/**
-      * 显示虚线外边框线
-      */
-
+/*
+  显示虚线外边框线
+*/
 @mixin showDashedOutline($width: 2px) {
   outline: $width dashed #b0c1d7;
   outline-offset: -2px;

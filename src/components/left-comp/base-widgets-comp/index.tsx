@@ -13,6 +13,7 @@ export default defineComponent({
   setup() {
     const baseWidgets = ref(visualConfig.componentModules.baseWidgets)
 
+    // 没拖拽一次就创建一个blocks，用于放置区渲染
     const { cloneDog } = useCloneDog()
 
     const layoutTypeStore = useLayoutTypeStore() // 直接解构会丢失响应性
@@ -30,14 +31,16 @@ export default defineComponent({
           // clone={cloneDog as any}
           // onChange={log as any}
           {...{
-            clone: cloneDog,
+            clone: cloneDog, // 克隆函数
             onChange:log
           } as Partial<{ clone: Function,onChange: Function }>}
           itemKey={'key'}
         >
+          {/* item 是一个插槽。这是 vue.draggable.next 提供的具名插槽，用于自定义每个拖拽项的渲染 */}
           {{
             item: ({ element }) => (
               <div class={[styles.listGroupItem,styles[`listGroupItem${layoutTypeStore.layoutType}`]]} data-label={element.label}>
+                {/* 执行每个组件里的preview方法 */}
                 {element.preview()}
               </div>
             ),
