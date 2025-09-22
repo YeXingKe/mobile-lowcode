@@ -41,6 +41,8 @@ import { reactive, ref } from 'vue'
 import IconMason from '@/components/icons/IconMason.vue'
 import { setTheme } from '@/utils/theme'
 import { useModal } from '@/hooks/useModal';
+import { useVisualData } from '@/hooks/useVisualData';
+import { ElMessage } from 'element-plus';
 
 defineOptions({
   name: 'PageHeader',
@@ -68,9 +70,11 @@ const changeTheme = (theme) => {
 changeTheme(localStorage.getItem('theme') || 'default');
 
 const clickRun = () => {
-  const qrcode = useQRCode(`${location.origin}/preview`);
-  
-  useModal({
+  const {currentPage} = useVisualData()
+  const qrcode = useQRCode(`${location.origin}/mobile-lowcode/#/preview`);
+
+  if(currentPage.value && currentPage.value.blocks && currentPage.value.blocks.length){
+    useModal({
     title: '预览二维码',
     props: {
       width: 300,
@@ -82,6 +86,9 @@ const clickRun = () => {
       </div>
      ),
   });
+  }else {
+    ElMessage.warning('页面容器当前为空')
+  }
 }
 
 const clickGithub = () => {
