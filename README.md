@@ -1,4 +1,4 @@
-# 低代码平台 🚀
+# 基于Vue3+Vant实现的移动端页面生成器  🚀
 
 ![项目徽章](https://img.shields.io/badge/版本-1.0.0-blue)
 ![License](https://img.shields.io/github/license/YeXingKe/mobile-lowcode)
